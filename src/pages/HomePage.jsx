@@ -30,16 +30,16 @@ function HomePage() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="relative top-0 container mx-auto px-6 md:py-4 py-3 w-full z-50"
       >
-        <div class="flex items-center justify-between bg-softBlue my-2 px-5 md:py-3 py-2 rounded-lg bg-opacity-80 backdrop-blur-sm">
+        <div class="flex items-center justify-between bg-softBlue my-2 px-5 pl-2 md:pl-5 md:py-3 py-1 rounded-lg bg-opacity-90 backdrop-blur-sm">
           <div class="flex items-center space-x-12">
             {/* Logo */}
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-1 md:space-x-4">
               <img
                 src="/assets/image.png"
                 alt="Logo"
-                className="h-[35px] md:h-full"
+                className="h-[26px] md:h-full"
               />
-              <p className="font-bold  text-gray-800">
+              <p className="font-bold text-xs md:text-base text-gray-800">
                 Kings Health Care Practitioner Limited
               </p>
             </div>
@@ -83,7 +83,7 @@ function HomePage() {
             className="lg:hidden text-3xl text-gray-700 focus:outline-none"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <FiX /> : <FiMenu />}
+            {isOpen ? <FiX size={20}/> : <FiMenu size={20}/>}
           </button>
         </div>
 
@@ -94,33 +94,33 @@ function HomePage() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden absolute py-6 px-6 rounded-lg bg-lightBlue backdrop-blur-sm opacity-90 left-[1.5rem] right-[1.5rem] top-[4.6rem] z-100"
+            className="lg:hidden absolute py-6 px-6 rounded-lg bg-softBlue backdrop-blur-sm bg-opacity-100 left-[1.5rem] right-[1.5rem] top-[3.8rem] md:top-[6.4rem] z-100"
           >
-            <div class="flex flex-col items-center justify-center w-full space-y-6 font-semibold rounded-sm">
+            <div class="flex flex-col items-center justify-center w-full md:space-y-6 space-y-4 font-semibold rounded-sm">
               <a
                 href="#home"
-                class="w-full text-center hover:text-softGreen"
+                class="w-full text-center text-sm  hover:text-softGreen"
                 onClick={() => setIsOpen(!isOpen)}
               >
                 Home
               </a>
               <a
                 href="#about"
-                class="w-full text-center hover:text-softGreen"
+                class="w-full text-center text-sm hover:text-softGreen"
                 onClick={() => setIsOpen(!isOpen)}
               >
                 About Us
               </a>
               <a
                 href="#services"
-                class="w-full text-center hover:text-softGreen"
+                class="w-full text-center text-sm hover:text-softGreen"
                 onClick={() => setIsOpen(!isOpen)}
               >
                 Services
               </a>
               <a
                 href="#services"
-                class="w-full text-center hover:text-softGreen"
+                class="w-full text-center text-sm hover:text-softGreen"
                 onClick={() => setIsOpen(!isOpen)}
               >
                 Contact
@@ -128,7 +128,7 @@ function HomePage() {
               <div className="bg-gray-400 h-[0.5px] w-full"></div>
               <a
                 href="#sign-in"
-                class="w-1/2 py-3 border-t border-gray-400 text-center rounded-full bg-darkBlue text-gray-100 hover:bg-blue-700 hover:text-white transition duration-300 "
+                class="md:w-1/2 w-[100px] text-sm py-1 md:py-3 border-t border-gray-400 text-center rounded-full bg-darkBlue text-gray-100 hover:bg-blue-700 hover:text-white transition duration-300 "
                 onClick={() => setIsOpen(!isOpen)}
               >
                 Apply Now
@@ -152,9 +152,9 @@ function HomePage() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex flex-col space-y-8 max-w-4xl"
+            className="flex flex-col md:space-y-8 space-y-6 max-w-4xl"
           >
-            <h2 className="text-3xl font-bold md:text-6xl">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
               Get Ready for the Best professional Attention Ever!
             </h2>
             <p className="max-w-md text-base md:text-lg md:font-semibold">
@@ -162,19 +162,21 @@ function HomePage() {
               Nurses to Take care of your Health using the best medical
               products.
             </p>
-            <div class="flex justify-between items-center md:justify-start md:space-x-20">
-              <button className="bg-darkBlue text-gray-100 px-3 py-0 rounded-lg hover:bg-blue-700 hover:text-white transition duration-300 md:px-6">
-                <div class="flex items-center justify-center">
-                  <p>Get in touch</p>
-                  <img src="assets/arrow.png" alt="" className="mt-4" />
-                </div>
+            <div class="flex justify-between items-center md:justify-start md:space-x-20 space-x-5">
+              <button className="flex justify-center items-center w-[50%] md:w-40 bg-darkBlue text-gray-100 px-1  py-0 md:py-1 rounded-lg hover:bg-blue-700 hover:text-white transition duration-300 md:px-6">
+                  <p className="w-[70%] text-sm">Get in touch</p>
+                  <div class="w-[20%]">
+                  <img src="assets/arrow.png" alt="" className="mt-3"/>
+                  </div>
+                  
+                
               </button>
 
-              <div class="flex space-x-4">
-                <img src="/assets/phoneIcon.png" alt="" />
-                <div class="">
-                  <p class="text-softGreen">Customer Care</p>
-                  <p>07859735868 / 0786103198</p>
+              <div class="flex space-x-3 md:space-x-4  items-center">
+                <img src="/assets/phoneIcon.png" alt="" className="h-[38px] md:h-full"/>
+                <div class="items-start">
+                  <p class="text-softGreen text-md mt-5 md:mt-0">Customer Care</p>
+                  <p className="text-sm">07859735868 / 0786103198</p>
                 </div>
               </div>
             </div>
@@ -205,12 +207,16 @@ function HomePage() {
 
       {/* Services */}
       <section id="services" class="container mx-auto px-6">
-        <div class="flex items-center justify-center space-x-8 bg-lightBlue py-6 px-5 rounded-md">
+        <div class="flex flex-col md:flex-row items-center justify-center md:space-x-8  bg-lightBlue py-6 px-5 rounded-md space-y-4 md:space-y-0">
           {/* box 1 */}
-          <div class="flex flex-col items-center space-y-4 bg-white py-4 px-6 rounded-md w-1/3">
-            <img src="assets/service-icon1.png" alt="" />
+          <div class="flex flex-col items-center space-y-4 bg-white py-4 px-6 rounded-md md:w-1/3">
+            <img
+              src="assets/service-icon1.png"
+              alt=""
+              className="h-[60px] md:h-full"
+            />
             <h3>Specialty Services</h3>
-            <p className="text-center max-w-xs">
+            <p className="text-center text-md md:text-base max-w-xs">
               We are constantly striving to redefine the standard of excellence
               in everything we do.
             </p>
@@ -223,8 +229,12 @@ function HomePage() {
           </div>
 
           {/* box 2 */}
-          <div class="flex flex-col items-center space-y-4 bg-white py-4 px-6 rounded-md w-1/3">
-            <img src="assets/service-icon1.png" alt="" />
+          <div class="flex flex-col items-center space-y-4 bg-white py-4 px-6 rounded-md md:w-1/3">
+            <img
+              src="assets/service-icon1.png"
+              alt=""
+              className="h-[60px] md:h-full"
+            />
             <h3>Specialty Services</h3>
             <p className="text-center max-w-xs">
               We are constantly striving to redefine the standard of excellence
@@ -239,8 +249,12 @@ function HomePage() {
           </div>
 
           {/* box 3 */}
-          <div class="flex flex-col items-center space-y-4 bg-white py-4 px-6 rounded-md w-1/3">
-            <img src="assets/service-icon1.png" alt="" />
+          <div class="flex flex-col items-center space-y-4 bg-white py-4 px-6 rounded-md md:w-1/3">
+            <img
+              src="assets/service-icon1.png"
+              alt=""
+              className="h-[60px] md:h-full"
+            />
             <h3>Specialty Services</h3>
             <p className="text-center max-w-xs">
               We are constantly striving to redefine the standard of excellence
@@ -258,9 +272,9 @@ function HomePage() {
 
       {/* training */}
       <section id="training" class="container mx-auto px-6 my-24">
-        <div class="flex items-start justify-between space-x-20 mx-12">
-          <div class="max-w-xl ml-4">
-            <h6 className="text-4xl font-bold leading-tight">
+        <div class="flex flex-col md:flex-row items-start justify-between space-x-20 mx-12">
+          <div class="max-w-xl ml-4 md:w-1/2">
+            <h6 className="text-3xl md:text-4xl font-bold leading-tight">
               We’re accepting new trainees and we can’t wait to have you in our
               midst.
             </h6>
@@ -269,7 +283,7 @@ function HomePage() {
               healthcare by empowering medical excellence.
             </p>
           </div>
-          <div class="w-1/3 mt-10">
+          <div class="w-[60%] mt-10">
             <img src="assets/training-image.png" alt="" className="w-full" />
           </div>
         </div>
