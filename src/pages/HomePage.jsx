@@ -164,7 +164,7 @@ function HomePage() {
             </p>
             <div class="flex justify-between items-center md:justify-start md:space-x-20 space-x-5">
               <button className="flex justify-center items-center w-[55%] md:w-40 bg-darkBlue text-gray-100 px-1  py-1 md:py-1 rounded-lg hover:bg-blue-700 hover:text-white transition duration-300 md:px-6">
-                  <p className="w-[80%] ">Get in touch</p>
+                  <p className="w-[90%] ">Get in touch</p>
                   <div class="w-[20%]">
                   <img src="assets/arrow.png" alt="" className="mt-3"/>
                   </div>
