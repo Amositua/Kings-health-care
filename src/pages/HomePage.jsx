@@ -6,6 +6,23 @@ function HomePage() {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null); // Reference for menu container
 
+
+  useEffect(() => {
+    // Disable scroll restoration behavior
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+  
+    // Force scroll to the top
+    window.scrollTo(0, 0);
+  }, []);
+  
+  // useEffect(() => {
+  //   window.history.replaceState(null, null, " ");
+  //   window.scrollTo(0, 0);
+  // }, []);
+  
+  
   useEffect(() => {
     function handleClickOutside(event) {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -83,7 +100,7 @@ function HomePage() {
             className="lg:hidden text-3xl text-gray-700 focus:outline-none"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <FiX size={20}/> : <FiMenu size={20}/>}
+            {isOpen ? <FiX size={20} /> : <FiMenu size={20} />}
           </button>
         </div>
 
@@ -94,7 +111,7 @@ function HomePage() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden absolute py-6 px-6 rounded-lg bg-softBlue backdrop-blur-sm bg-opacity-100 left-[1.5rem] right-[1.5rem] top-[3.8rem] md:top-[6.4rem] z-100"
+            className="lg:hidden absolute py-6 px-6 rounded-lg bg-softBlue backdrop-blur-sm bg-opacity-100 left-[1.5rem] right-[1.5rem] top-[4.8rem] md:top-[6.4rem] z-100"
           >
             <div class="flex flex-col items-center justify-center w-full md:space-y-6 space-y-4 font-semibold rounded-sm">
               <a
@@ -140,344 +157,457 @@ function HomePage() {
 
       {/* Hero-section */}
       <motion.section
-        id="hero"
-        className="container mx-auto px-6"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div class="flex flex-col lg:flex-row justify-between md:space-x-20 items-start mt-2 md:mt-20">
-          {/* header */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex flex-col md:space-y-8 space-y-6 max-w-4xl"
-          >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
-              Get Ready for the Best professional Attention Ever!
-            </h2>
-            <p className="max-w-md text-base md:text-lg md:font-semibold">
-              We Recruit only the best and qualified Medical Practitioners and
-              Nurses to Take care of your Health using the best medical
-              products.
-            </p>
-            <div class="flex justify-between items-center md:justify-start md:space-x-20 space-x-5">
-              <button className="flex justify-center items-center w-[55%] md:w-40 bg-darkBlue text-gray-100 px-1  py-1 md:py-1 rounded-lg hover:bg-blue-700 hover:text-white transition duration-300 md:px-6">
-                  <p className="w-[90%] ">Get in touch</p>
-                  <div class="w-[20%]">
-                  <img src="assets/arrow.png" alt="" className="mt-3"/>
-                  </div>
-                  
-                
-              </button>
+  id="hero"
+  className="container mx-auto px-6"
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  transition={{ duration: 0.8 }}
+  viewport={{ once: true, amount: 0.2 }} // Triggers when 20% of the section is in view
+>
+  <div className="flex flex-col lg:flex-row justify-between md:space-x-20 items-start mt-2 md:mt-20">
+    
+    {/* Header */}
+    <motion.div
+      initial={{ opacity: 0, x: -50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.2 }}
+      className="flex flex-col md:space-y-8 space-y-6 max-w-4xl"
+    >
+      <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
+        Get Ready for the Best Professional Attention Ever!
+      </h2>
+      <p className="max-w-md text-base md:text-lg md:font-semibold">
+        We Recruit only the best and qualified Medical Practitioners and Nurses
+        to Take care of your Health using the best medical products.
+      </p>
+      <div className="flex justify-between items-center md:justify-start md:space-x-20 space-x-5">
+        <button className="flex justify-center items-center w-[55%] md:w-40 bg-darkBlue text-gray-100 px-1 py-1 md:py-1 rounded-lg hover:bg-blue-700 hover:text-white transition duration-300 md:px-6">
+          <p className="w-[90%] ">Get in touch</p>
+          <div className="w-[20%]">
+            <img src="assets/arrow.png" alt="" className="mt-3" />
+          </div>
+        </button>
 
-              <div class="flex space-x-3 md:space-x-4  items-center">
-                <img src="/assets/phoneIcon.png" alt="" className="h-[45px] md:h-full"/>
-                <div class="items-start">
-                  <p class="text-softGreen text-base mt-5 md:mt-0">Customer Care</p>
-                  <p className="">07859735868 / 0786103198</p>
-                </div>
-              </div>
-            </div>
-            <div class="">
-              <img
-                src="assets/health-icon.png"
-                alt=""
-                className="h-[130px] md:h-full"
-              />
-            </div>
-          </motion.div>
-
-          {/* Image */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="md:w-1/2 flex justify-center self-center"
-          >
-            <img
-              src="/assets/doc-photo.png"
-              alt="Doctor"
-              className="h-[350px] md:h-full"
-            />
-          </motion.div>
+        <div className="flex space-x-3 md:space-x-4 items-center">
+          <img src="/assets/phoneIcon.png" alt="" className="h-[45px] md:h-full" />
+          <div className="items-start">
+            <p className="text-softGreen text-base mt-5 md:mt-0">Customer Care</p>
+            <p className="">07859735868 / 0786103198</p>
+          </div>
         </div>
-      </motion.section>
+      </div>
+      <div>
+        <img src="assets/health-icon.png" alt="" className="h-[130px] md:h-full" />
+      </div>
+    </motion.div>
+
+    {/* Image */}
+    <motion.div
+      initial={{ opacity: 0, x: 50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.5 }}
+      className="md:w-1/2 flex justify-center self-center"
+    >
+      <img src="/assets/doc-photo.png" alt="Doctor" className="h-[350px] md:h-full" />
+    </motion.div>
+    
+  </div>
+</motion.section>
+
 
       {/* Services */}
-      <section id="services" class="container mx-auto px-6">
-        <div class="flex flex-col md:flex-row items-center justify-center md:space-x-8  bg-lightBlue py-6 px-5 rounded-md space-y-4 md:space-y-0">
-          {/* box 1 */}
-          <div class="flex flex-col items-center space-y-4 bg-white py-4 px-6 rounded-md md:w-1/3">
-            <img
-              src="assets/service-icon1.png"
-              alt=""
-              className="h-[60px] md:h-full"
-            />
-            <h3>Specialty Services</h3>
-            <p className="text-center text-md md:text-base max-w-xs">
-              We are constantly striving to redefine the standard of excellence
-              in everything we do.
-            </p>
-            <a href="#service" target="_blank" rel="noopener noreferrer">
-              <div class="flex">
-                <p>Learn More</p>
-                <img src="assets/green-arrow.png" alt="" />
-              </div>
-            </a>
-          </div>
-
-          {/* box 2 */}
-          <div class="flex flex-col items-center space-y-4 bg-white py-4 px-6 rounded-md md:w-1/3">
-            <img
-              src="assets/service-icon1.png"
-              alt=""
-              className="h-[60px] md:h-full"
-            />
-            <h3>Specialty Services</h3>
-            <p className="text-center max-w-xs">
-              We are constantly striving to redefine the standard of excellence
-              in everything we do.
-            </p>
-            <a href="#service" target="_blank" rel="noopener noreferrer">
-              <div class="flex">
-                <p>Learn More</p>
-                <img src="assets/green-arrow.png" alt="" />
-              </div>
-            </a>
-          </div>
-
-          {/* box 3 */}
-          <div class="flex flex-col items-center space-y-4 bg-white py-4 px-6 rounded-md md:w-1/3">
-            <img
-              src="assets/service-icon1.png"
-              alt=""
-              className="h-[60px] md:h-full"
-            />
-            <h3>Specialty Services</h3>
-            <p className="text-center max-w-xs">
-              We are constantly striving to redefine the standard of excellence
-              in everything we do.
-            </p>
-            <a href="#service" target="_blank" rel="noopener noreferrer">
-              <div class="flex">
-                <p>Learn More</p>
-                <img src="assets/green-arrow.png" alt="" />
-              </div>
-            </a>
-          </div>
-        </div>
+      <section id="services" className="container mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="flex flex-col md:flex-row items-center justify-center md:space-x-8 bg-lightBlue py-6 px-5 rounded-md space-y-4 md:space-y-0"
+        >
+          {[1, 2, 3].map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 * index, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="flex flex-col items-center space-y-4 bg-white py-4 px-6 rounded-md md:w-1/3"
+            >
+              <motion.img
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+                src="assets/service-icon1.png"
+                alt=""
+                className="h-[60px] md:h-full"
+              />
+              <h3>Specialty Services</h3>
+              <p className="text-center text-md md:text-base max-w-xs">
+                We are constantly striving to redefine the standard of excellence
+                in everything we do.
+              </p>
+              <motion.a
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+                viewport={{ once: true }}
+                href="#service"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="flex">
+                  <p>Learn More</p>
+                  <img src="assets/green-arrow.png" alt="" />
+                </div>
+              </motion.a>
+            </motion.div>
+          ))}
+        </motion.div>
       </section>
 
       {/* training */}
-      <section id="training" class="container mx-auto px-6 md:my-24 my-12">
-        <div class="flex flex-col md:flex-row md:items-start items-center justify-between md:space-x-20 md:mx-12">
-          <div class="md:max-w-xl max-w-4xl md:ml-4 md:w-1/2 w-full">
+      <section id="training" className="container mx-auto px-6 md:my-24 my-12">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="flex flex-col md:flex-row md:items-start items-center justify-between md:space-x-20 md:mx-12"
+        >
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="md:max-w-xl max-w-4xl md:ml-4 md:w-1/2 w-full"
+          >
             <h6 className="text-2xl md:text-4xl font-bold leading-tight">
-              We’re accepting new trainees and we can’t wait to have you in our
-              midst.
+              We’re accepting new trainees and we can’t wait to have you in our midst.
             </h6>
             <p className="md:mt-10 mt-4 max-w-sm md:text-lg">
-              We use only the best products to transform the future of
-              healthcare by empowering medical excellence.
+              We use only the best products to transform the future of healthcare by
+              empowering medical excellence.
             </p>
-          </div>
-          <div class=" mt-10">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mt-10"
+          >
             <img src="assets/training-image.png" alt="" className="w-full" />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* About */}
-      <section id="about" class="container mx-auto px-6">
-        <div class="flex flex-col md:flex-row md:space-y-0 space-y-6 md:space-x-20 bg-lightBlue py-6 px-5 rounded-md md:my-8 my-0 items-start">
-          <div class="md:w-[35%]">
-            <img src="assets/personnel.png" className="w-full" alt="" />
-          </div>
+      <section id="about" className="container mx-auto px-6">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="flex flex-col md:flex-row md:space-y-0 space-y-6 md:space-x-20 bg-lightBlue py-6 px-5 rounded-md md:my-8 my-0 items-start"
+      >
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="md:w-[35%]"
+        >
+          <img src="assets/personnel.png" className="w-full" alt="" />
+        </motion.div>
 
-          <div class="md:w-[65%]">
-            <h2 className="md:text-4xl text-2xl max-w-3xl font-bold leading-tight">
-              Why choose Kings Health care practitioners for your health
-              training programs.
-            </h2>
-            <p className="mt-4 mb-4 max-w-xl md:text-lg">
-              We have medical professionals to offer the best teachings to our
-              trainees, using the best medical products and equipments..
-            </p>
-
-            <div class="flex flex-col  space-y-4">
-              <div class="flex space-x-4">
-                <img src="assets/shield.png" alt="" className="h-[25px] w-[20px]"/>
-                <p>We offer the best learning experience.</p>
-              </div>
-              <div class="flex space-x-4">
-                <img src="assets/shield.png" alt="" className="h-[25px] w-[20px]"/>
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="md:w-[65%]"
+        >
+          <h2 className="md:text-4xl text-2xl max-w-3xl font-bold leading-tight">
+            Why choose Kings Health care practitioners for your health training programs.
+          </h2>
+          <p className="mt-4 mb-4 max-w-xl md:text-lg">
+            We have medical professionals to offer the best teachings to our trainees, using the best medical products and equipment.
+          </p>
+          
+          <div className="flex flex-col space-y-4">
+            {[...Array(6)].map((_, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                className="flex space-x-4"
+              >
+                <img src="assets/shield.png" alt="" className="h-[25px] w-[20px]" />
                 <p>
-                  We offer a conducive and healthy learning and working space.
+                  {[
+                    "We offer the best learning experience.",
+                    "We offer a conducive and healthy learning and working space.",
+                    "We certify our trainees with international certificates.",
+                    "We place our certified trainees on job opportunities within and outside Nigeria.",
+                    "We provide emergency staff of nurses and healthcare assistants (HCA) for NHS and private healthcare organizations.",
+                  ][index] || "Additional Benefit"}
                 </p>
-              </div>
-              <div class="flex space-x-4">
-                <img src="assets/shield.png" alt="" className="h-[25px] w-[20px]"/>
-                <p>We certify our trainees with international certificates.</p>
-              </div>
-              <div class="flex space-x-4">
-                <img src="assets/shield.png" alt="" className="h-[25px] w-[20px]"/>
-                <p>
-                  We place our certified trainees on job opportunities within
-                  and outside Nigeria.
-                </p>
-              </div>
-              <div class="flex space-x-4">
-                <img src="assets/shield.png" alt="" className="h-[25px] w-[20px]"/>
-                <p>
-                  We place our certified trainees on job opportunities within
-                  and outside Nigeria.
-                </p>
-              </div>
-              <div class="flex space-x-4">
-                <img src="assets/shield.png" alt="" className="h-[25px] w-[20px]"/>
-                <p>
-                  We provide emergency staffs of nurse and health care
-                  assistants (HCA) for NHS and private health care
-                  organisations.
-                </p>
-              </div>
-            </div>
+              </motion.div>
+            ))}
           </div>
-        </div>
-      </section>
+        </motion.div>
+      </motion.div>
+    </section>
 
       {/* training 2 */}
-      <section id="training" class="container mx-auto px-6 md:my-24 my-10">
-        <div class="flex flex-col md:flex-row items-start justify-between md:space-x-20 md:mx-12">
-          <div class="md:w-2/3  max-w-lg md:ml-4 space-y-4 md:space-y-12">
-            <h6 className="text-2xl md:text-4xl font-bold leading-tight">
-              Explore diverse career paths from Nursing, to medical research
-              etc.
-            </h6>
-            <p className="mt-10 max-w-lg md:text-lg">
-              We use only the best quality products in the market to achieve a
-              healthy medical training session.
-            </p>
-            <button className="md:mt-12 bg-darkBlue text-gray-100 md:px-6 pl-2 md:py-1  rounded-lg hover:bg-blue-700 hover:text-white transition duration-300">
-              <div class="flex items-center justify-center">
-                <p className="">Lets have you on board</p>
-                <img src="assets/arrow.png" alt="" className="mt-4" />
-              </div>
-            </button>
-          </div>
-          <div class="lg:w-1/3 md:w-1/2 mt-10">
-            <img src="assets/personnel2.png" alt="" className="w-full" />
-          </div>
-        </div>
-      </section>
+      <section id="activity" className="container mx-auto px-6 md:my-24 my-10">
+      <div className="flex flex-col md:flex-row items-start justify-between md:space-x-20 md:mx-12">
+        
+        {/* Text Content */}
+        <motion.div
+          className="md:w-2/3 max-w-lg md:ml-4 space-y-4 md:space-y-12"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          <h6 className="text-2xl md:text-4xl font-bold leading-tight">
+            Explore diverse career paths from Nursing to Medical Research.
+          </h6>
+          <p className="mt-10 max-w-lg md:text-lg">
+            We use only the best quality products in the market to ensure a
+            healthy and effective medical training session.
+          </p>
+          
+          {/* Call-to-Action Button */}
+          <motion.button
+            className="md:mt-12 bg-darkBlue text-gray-100 md:px-6 pl-2 md:py-1 rounded-lg hover:bg-blue-700 hover:text-white transition duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <div className="flex items-center justify-center">
+              <p>Let's have you on board</p>
+              <img src="assets/arrow.png" alt="Arrow" className="mt-4" />
+            </div>
+          </motion.button>
+        </motion.div>
+
+        {/* Image */}
+        <motion.div
+          className="lg:w-1/3 md:w-1/2 mt-10"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <img src="assets/personnel2.png" alt="Medical Personnel" className="w-full" />
+        </motion.div>
+      </div>
+    </section>
+
 
       {/* programme */}
-      <section id="programme" class="container mx-auto md:px-20 px-5">
-        <div class="flex flex-col items-center justify-center space-y-4">
-          <h1 className="text-2xl md:text-4xl font-bold">We’re recruiting new trainees</h1>
-          <img src="assets/green-line.png" alt="" className="" />
+      <section id="programme" className="container mx-auto md:px-20 px-5">
+      <div className="flex flex-col items-center justify-center space-y-4">
+        {/* Heading Animation */}
+        <motion.h1
+          className="text-2xl md:text-4xl font-bold"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          We’re recruiting new trainees
+        </motion.h1>
 
-          <div class="flex flex-col space-y-6 md:text-lg md:font-semibold">
-            <p>
-              Choose a team who cares about what you need. At Kings health care
-              practitioner limited, we’re more interested in the personal
-              welfare of our team mates (Trainee) and not just about the
-              “pressures” that comes with learning.{" "}
-            </p>
+        {/* Image Animation */}
+        <motion.img
+          src="assets/green-line.png"
+          alt=""
+          className=""
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          viewport={{ once: true }}
+        />
 
-            <p>
-              when ever we talk about ourselves we talk about what we can do for
-              you, because that is what is important to us. Regardless, we
-              understand that it is only fair if you know more about us
-              especially if you are considering to partner with us. A brief
-              historical detail about our health care system. Kings health care
-              practitioner limited was incorporated on the 24th of November,
-              2015.
-            </p>
-          </div>
-        </div>
-      </section>
+        {/* Text Animation */}
+        <motion.div
+          className="flex flex-col space-y-6 md:text-lg md:font-semibold"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <p>
+            Choose a team who cares about what you need. At Kings health care
+            practitioner limited, we’re more interested in the personal welfare
+            of our team mates (Trainee) and not just about the “pressures” that
+            come with learning.
+          </p>
+
+          <p>
+            Whenever we talk about ourselves, we talk about what we can do for
+            you, because that is what is important to us. Regardless, we
+            understand that it is only fair if you know more about us,
+            especially if you are considering partnering with us. A brief
+            historical detail about our health care system: Kings Health Care
+            Practitioner Limited was incorporated on the 24th of November, 2015.
+          </p>
+        </motion.div>
+      </div>
+    </section>
 
       {/* programme 2*/}
-      <section id="programme" class="container mx-auto md:px-20 px-5 mt-10 md:mt-32">
-        <div class="flex flex-col items-center justify-center space-y-4">
-          <h1 className="text-2xl md:text-4xl font-bold max-w-4xl text-center">
-            We’re established, we’re experienced, we’re financially stable.{" "}
-          </h1>
-          <img src="assets/green-line.png" alt="" className="" />
+      <section id="learning" className="container mx-auto md:px-20 px-5 mt-10 md:mt-32">
+      <div className="flex flex-col items-center justify-center space-y-4">
+        
+        {/* Heading Animation */}
+        <motion.h1
+          className="text-2xl md:text-4xl font-bold max-w-4xl text-center"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          We’re established, we’re experienced, we’re financially stable.
+        </motion.h1>
 
-          <div class="flex flex-col space-y-6 md:text-lg md:font-semibold">
-            <p>
-              But we know that might not be enough for you to choose us. But
-              knowing that our services meet the highest standards of quality,
-              ensuring exceptional results. We meticulously attend to every
-              detail, guaranteeing a flawless and healthy experience.{" "}
-            </p>
-          </div>
-        </div>
-      </section>
+        {/* Image Animation */}
+        <motion.img
+          src="assets/green-line.png"
+          alt=""
+          className=""
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          viewport={{ once: true }}
+        />
+
+        {/* Text Animation */}
+        <motion.div
+          className="flex flex-col space-y-6 md:text-lg md:font-semibold"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <p>
+            But we know that might not be enough for you to choose us. But
+            knowing that our services meet the highest standards of quality,
+            ensuring exceptional results. We meticulously attend to every
+            detail, guaranteeing a flawless and healthy experience.
+          </p>
+        </motion.div>
+      </div>
+    </section>
 
       {/* About us */}
-      <section id="about-us" class="container mx-auto px-5 mt-10 md:mt-20 bg-lightBlue">
-        <div class="flex flex-col space-y-12 md:px-12 py-10">
-          <div class="flex flex-col items-start space-y-2">
-            <img
-              src="assets/vision.png"
-              className="shadow-md shadow-gray-500 rounded-lg  p-2 h-[65px]"
-              alt="" 
-            />
-            <h3 className="text-2xl md:text-3xl text-center font-semibold">Vision</h3>
-            <img src="assets/green-line.png" alt="" className="" />
-            <p className="max-w-3xl">
-              Setting the standard for excellence in health care by unlocking a
-              healthier tomorrow through innovative care, education and
-              community engagements.
-            </p>
-          </div>
+      <section id="about-us" className="container mx-auto px-5 mt-10 md:mt-20 bg-lightBlue">
+      <div className="flex flex-col space-y-12 md:px-12 py-10">
+        
+        {/* Vision Section */}
+        <motion.div
+          className="flex flex-col items-start space-y-2"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          <motion.img
+            src="assets/vision.png"
+            className="shadow-md shadow-gray-500 rounded-lg p-2 h-[65px]"
+            alt="Vision Icon"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          />
+          <h3 className="text-2xl md:text-3xl text-center font-semibold">Vision</h3>
+          <img src="assets/green-line.png" alt="" className="" />
+          <p className="max-w-3xl">
+            Setting the standard for excellence in health care by unlocking a
+            healthier tomorrow through innovative care, education, and
+            community engagements.
+          </p>
+        </motion.div>
 
-          <div class="flex flex-col items-start justify-center">
-            <img src="assets/mission.png" alt="" className="h-[75px]" />
-            <h3 className="text-2xl md:text-3xl text-center font-semibold">Mission</h3>
-            <img src="assets/green-line.png" alt="" className="" />
-            <p className="max-w-3xl">
-              To deliver compassionate, high-quality health care with empathy,
-              kindness and respect by improving the health and well-being of our
-              community through accessible and affordab;le health care
-              trainings.
-            </p>
-          </div>
-        </div>
-      </section>
+        {/* Mission Section */}
+        <motion.div
+          className="flex flex-col items-start justify-center"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <motion.img
+            src="assets/mission.png"
+            className="h-[75px]"
+            alt="Mission Icon"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          />
+          <h3 className="text-2xl md:text-3xl text-center font-semibold">Mission</h3>
+          <img src="assets/green-line.png" alt="" className="" />
+          <p className="max-w-3xl">
+            To deliver compassionate, high-quality health care with empathy,
+            kindness, and respect by improving the health and well-being of our
+            community through accessible and affordable health care trainings.
+          </p>
+        </motion.div>
+      </div>
+    </section>
 
       {/* Accreditation */}
-      <section id="programme" class="container mx-auto px-5 md:px-20 mt-10 md:mt-20 mb-32">
-        <div class="flex flex-col items-center justify-center space-y-4">
-          <h1 className="text-2xl md:text-4xl uppercase font-semibold">
-            Accreditions and Partnership
-          </h1>
-          <img src="assets/accreditions-line.png" alt="" className="" />
+      <section id="accreditation" className="container mx-auto px-5 md:px-20 mt-10 md:mt-20 mb-32">
+      <div className="flex flex-col items-center justify-center space-y-4">
+        
+        {/* Heading */}
+        <motion.h1
+          className="text-2xl md:text-4xl uppercase font-semibold"
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          Accreditations and Partnerships
+        </motion.h1>
+        
+        {/* Decorative Line */}
+        <motion.img
+          src="assets/accreditions-line.png"
+          alt="Accreditation Line"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+        />
 
-          <div class="flex flex-col space-y-6 md:text-lg">
-            <p>
-              Kings Health practitioner Limited is an international health care
-              company that has its headquarter in England and Nigeria. At Kings
-              Health practitioners Llimited, we understand the importance of
-              accreditions that is why we ensure that we meet the specific
-              standards and criteria for a quality, safety performance.
-            </p>
+        {/* Content */}
+        <motion.div
+          className="flex flex-col space-y-6 md:text-lg"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+          viewport={{ once: true }}
+        >
+          <p>
+            Kings Health Practitioner Limited is an international health care
+            company with headquarters in England and Nigeria. At Kings Health Practitioners Limited, we understand the importance of accreditations, which is why we ensure that we meet the specific
+            standards and criteria for quality and safety performance.
+          </p>
 
-            <p>
-              Kings Health practitioner Limited is an international health care
-              company that has its headquarter in England and Nigeria. At Kings
-              Health practitioners Llimited, we understand the importance of
-              accreditions that is why we ensure that we meet the specific
-              standards and criteria for a quality, safety performance.
-            </p>
-          </div>
-        </div>
-      </section>
+          <p>
+            Through strategic partnerships and accreditation, we continue to elevate healthcare training and delivery, ensuring that our services adhere to the highest international standards.
+          </p>
+        </motion.div>
+      </div>
+    </section>
     </div>
   );
 }
