@@ -271,19 +271,19 @@ function HomePage() {
       </section>
 
       {/* training */}
-      <section id="training" class="container mx-auto px-6 my-24">
-        <div class="flex flex-col md:flex-row items-start justify-between space-x-20 mx-12">
-          <div class="max-w-xl ml-4 md:w-1/2">
-            <h6 className="text-3xl md:text-4xl font-bold leading-tight">
+      <section id="training" class="container mx-auto px-6 md:my-24 my-12">
+        <div class="flex flex-col md:flex-row md:items-start items-center justify-between md:space-x-20 md:mx-12">
+          <div class="md:max-w-xl max-w-4xl md:ml-4 md:w-1/2 w-full">
+            <h6 className="text-2xl md:text-4xl font-bold leading-tight">
               We’re accepting new trainees and we can’t wait to have you in our
               midst.
             </h6>
-            <p className="mt-10 max-w-sm text-lg">
+            <p className="md:mt-10 mt-4 max-w-sm md:text-lg">
               We use only the best products to transform the future of
               healthcare by empowering medical excellence.
             </p>
           </div>
-          <div class="w-[60%] mt-10">
+          <div class=" mt-10">
             <img src="assets/training-image.png" alt="" className="w-full" />
           </div>
         </div>
@@ -291,52 +291,52 @@ function HomePage() {
 
       {/* About */}
       <section id="about" class="container mx-auto px-6">
-        <div class="flex space-x-20 bg-lightBlue py-6 px-5 rounded-md my-8 items-start">
+        <div class="flex flex-col md:flex-row md:space-y-0 space-y-6 md:space-x-20 bg-lightBlue py-6 px-5 rounded-md md:my-8 my-0 items-start">
           <div class="md:w-[35%]">
             <img src="assets/personnel.png" className="w-full" alt="" />
           </div>
 
           <div class="md:w-[65%]">
-            <h2 className="text-4xl max-w-3xl font-bold leading-tight">
+            <h2 className="md:text-4xl text-2xl max-w-3xl font-bold leading-tight">
               Why choose Kings Health care practitioners for your health
-              training programs.{" "}
+              training programs.
             </h2>
-            <p className="mt-4 mb-4 max-w-xl text-lg">
+            <p className="mt-4 mb-4 max-w-xl md:text-lg">
               We have medical professionals to offer the best teachings to our
               trainees, using the best medical products and equipments..
             </p>
 
-            <div class="flex flex-col space-y-4">
+            <div class="flex flex-col  space-y-4">
               <div class="flex space-x-4">
-                <img src="assets/shield.png" alt="" />
+                <img src="assets/shield.png" alt="" className="h-[25px] w-[20px]"/>
                 <p>We offer the best learning experience.</p>
               </div>
               <div class="flex space-x-4">
-                <img src="assets/shield.png" alt="" />
+                <img src="assets/shield.png" alt="" className="h-[25px] w-[20px]"/>
                 <p>
                   We offer a conducive and healthy learning and working space.
                 </p>
               </div>
               <div class="flex space-x-4">
-                <img src="assets/shield.png" alt="" />
+                <img src="assets/shield.png" alt="" className="h-[25px] w-[20px]"/>
                 <p>We certify our trainees with international certificates.</p>
               </div>
               <div class="flex space-x-4">
-                <img src="assets/shield.png" alt="" />
+                <img src="assets/shield.png" alt="" className="h-[25px] w-[20px]"/>
                 <p>
                   We place our certified trainees on job opportunities within
                   and outside Nigeria.
                 </p>
               </div>
               <div class="flex space-x-4">
-                <img src="assets/shield.png" alt="" />
+                <img src="assets/shield.png" alt="" className="h-[25px] w-[20px]"/>
                 <p>
                   We place our certified trainees on job opportunities within
                   and outside Nigeria.
                 </p>
               </div>
               <div class="flex space-x-4">
-                <img src="assets/shield.png" alt="" />
+                <img src="assets/shield.png" alt="" className="h-[25px] w-[20px]"/>
                 <p>
                   We provide emergency staffs of nurse and health care
                   assistants (HCA) for NHS and private health care
@@ -349,37 +349,37 @@ function HomePage() {
       </section>
 
       {/* training 2 */}
-      <section id="training" class="container mx-auto px-6 my-24">
-        <div class="flex items-start justify-between space-x-20 mx-12">
-          <div class="max-w-lg ml-4">
-            <h6 className="text-4xl font-bold leading-tight">
+      <section id="training" class="container mx-auto px-6 md:my-24 my-10">
+        <div class="flex flex-col md:flex-row items-start justify-between md:space-x-20 md:mx-12">
+          <div class="md:w-2/3  max-w-lg md:ml-4 space-y-4 md:space-y-12">
+            <h6 className="text-2xl md:text-4xl font-bold leading-tight">
               Explore diverse career paths from Nursing, to medical research
               etc.
             </h6>
-            <p className="mt-10 max-w-lg text-lg">
+            <p className="mt-10 max-w-lg md:text-lg">
               We use only the best quality products in the market to achieve a
               healthy medical training session.
             </p>
-            <button className="mt-12 bg-darkBlue text-gray-100 px-6 py-1 rounded-lg hover:bg-blue-700 hover:text-white transition duration-300">
+            <button className="md:mt-12 bg-darkBlue text-gray-100 md:px-6 pl-2 md:py-1  rounded-lg hover:bg-blue-700 hover:text-white transition duration-300">
               <div class="flex items-center justify-center">
-                <p>Lets have you on board</p>
+                <p className="text-sm">Lets have you on board</p>
                 <img src="assets/arrow.png" alt="" className="mt-4" />
               </div>
             </button>
           </div>
-          <div class="w-1/3 mt-10">
+          <div class="lg:w-1/3 md:w-1/2 mt-10">
             <img src="assets/personnel2.png" alt="" className="w-full" />
           </div>
         </div>
       </section>
 
       {/* programme */}
-      <section id="programme" class="container mx-auto px-20">
+      <section id="programme" class="container mx-auto md:px-20 px-5">
         <div class="flex flex-col items-center justify-center space-y-4">
-          <h1 className="text-4xl font-bold">We’re recruiting new trainees</h1>
+          <h1 className="text-2xl md:text-4xl font-bold">We’re recruiting new trainees</h1>
           <img src="assets/green-line.png" alt="" className="" />
 
-          <div class="flex flex-col space-y-6 text-lg font-semibold">
+          <div class="flex flex-col space-y-6 md:text-lg md:font-semibold">
             <p>
               Choose a team who cares about what you need. At Kings health care
               practitioner limited, we’re more interested in the personal
@@ -401,14 +401,14 @@ function HomePage() {
       </section>
 
       {/* programme 2*/}
-      <section id="programme" class="container mx-auto px-20 mt-32">
+      <section id="programme" class="container mx-auto md:px-20 px-5 mt-10 md:mt-32">
         <div class="flex flex-col items-center justify-center space-y-4">
-          <h1 className="text-4xl font-bold max-w-4xl text-center">
+          <h1 className="text-2xl md:text-4xl font-bold max-w-4xl text-center">
             We’re established, we’re experienced, we’re financially stable.{" "}
           </h1>
           <img src="assets/green-line.png" alt="" className="" />
 
-          <div class="flex flex-col space-y-6 text-lg font-semibold">
+          <div class="flex flex-col space-y-6 md:text-lg md:font-semibold">
             <p>
               But we know that might not be enough for you to choose us. But
               knowing that our services meet the highest standards of quality,
@@ -420,15 +420,15 @@ function HomePage() {
       </section>
 
       {/* About us */}
-      <section id="about-us" class="container mx-auto px-5 mt-20 bg-lightBlue">
-        <div class="flex flex-col space-y-12 px-12 py-10">
+      <section id="about-us" class="container mx-auto px-5 mt-10 md:mt-20 bg-lightBlue">
+        <div class="flex flex-col space-y-12 md:px-12 py-10">
           <div class="flex flex-col items-start space-y-2">
             <img
               src="assets/vision.png"
-              className="shadow-md shadow-gray-500 rounded-lg  p-2"
-              alt=""
+              className="shadow-md shadow-gray-500 rounded-lg  p-2 h-[65px]"
+              alt="" 
             />
-            <h3 className="text-3xl text-center font-semibold">Vision</h3>
+            <h3 className="text-2xl md:text-3xl text-center font-semibold">Vision</h3>
             <img src="assets/green-line.png" alt="" className="" />
             <p className="max-w-3xl">
               Setting the standard for excellence in health care by unlocking a
@@ -438,8 +438,8 @@ function HomePage() {
           </div>
 
           <div class="flex flex-col items-start justify-center">
-            <img src="assets/mission.png" alt="" />
-            <h3 className="text-3xl text-center font-semibold">Mission</h3>
+            <img src="assets/mission.png" alt="" className="h-[75px]" />
+            <h3 className="text-2xl md:text-3xl text-center font-semibold">Mission</h3>
             <img src="assets/green-line.png" alt="" className="" />
             <p className="max-w-3xl">
               To deliver compassionate, high-quality health care with empathy,
@@ -452,14 +452,14 @@ function HomePage() {
       </section>
 
       {/* Accreditation */}
-      <section id="programme" class="container mx-auto px-20 mt-20 mb-32">
+      <section id="programme" class="container mx-auto px-5 md:px-20 mt-10 md:mt-20 mb-32">
         <div class="flex flex-col items-center justify-center space-y-4">
-          <h1 className="text-4xl uppercase font-semibold ">
+          <h1 className="text-xl md:text-4xl uppercase font-semibold">
             Accreditions and Partnership
           </h1>
           <img src="assets/accreditions-line.png" alt="" className="" />
 
-          <div class="flex flex-col space-y-6 text-lg">
+          <div class="flex flex-col space-y-6 md:text-lg">
             <p>
               Kings Health practitioner Limited is an international health care
               company that has its headquarter in England and Nigeria. At Kings
