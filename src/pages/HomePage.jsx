@@ -30,7 +30,7 @@ function HomePage() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="relative top-0 container mx-auto px-6 md:py-4 py-3 w-full z-50"
       >
-        <div class="flex items-center justify-between bg-softBlue my-2 px-5 pl-2 md:pl-5 md:py-3 py-1 rounded-lg bg-opacity-90 backdrop-blur-sm">
+        <div class="flex items-center justify-between bg-softBlue my-2 px-5 pl-2 md:pl-5 md:py-3 py-3 rounded-lg bg-opacity-90 backdrop-blur-sm">
           <div class="flex items-center space-x-12">
             {/* Logo */}
             <div className="flex items-center space-x-1 md:space-x-4">
@@ -146,7 +146,7 @@ function HomePage() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <div class="flex flex-col lg:flex-row justify-between md:space-x-20 items-start mt-4 md:mt-20">
+        <div class="flex flex-col lg:flex-row justify-between md:space-x-20 items-start mt-2 md:mt-20">
           {/* header */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -154,7 +154,7 @@ function HomePage() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex flex-col md:space-y-8 space-y-6 max-w-4xl"
           >
-            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
               Get Ready for the Best professional Attention Ever!
             </h2>
             <p className="max-w-md text-base md:text-lg md:font-semibold">
@@ -163,8 +163,8 @@ function HomePage() {
               products.
             </p>
             <div class="flex justify-between items-center md:justify-start md:space-x-20 space-x-5">
-              <button className="flex justify-center items-center w-[50%] md:w-40 bg-darkBlue text-gray-100 px-1  py-0 md:py-1 rounded-lg hover:bg-blue-700 hover:text-white transition duration-300 md:px-6">
-                  <p className="w-[70%] text-sm">Get in touch</p>
+              <button className="flex justify-center items-center w-[50%] md:w-40 bg-darkBlue text-gray-100 px-1  py-1 md:py-1 rounded-lg hover:bg-blue-700 hover:text-white transition duration-300 md:px-6">
+                  <p className="w-[80%] ">Get in touch</p>
                   <div class="w-[20%]">
                   <img src="assets/arrow.png" alt="" className="mt-3"/>
                   </div>
@@ -173,10 +173,10 @@ function HomePage() {
               </button>
 
               <div class="flex space-x-3 md:space-x-4  items-center">
-                <img src="/assets/phoneIcon.png" alt="" className="h-[38px] md:h-full"/>
+                <img src="/assets/phoneIcon.png" alt="" className="h-[45px] md:h-full"/>
                 <div class="items-start">
-                  <p class="text-softGreen text-md mt-5 md:mt-0">Customer Care</p>
-                  <p className="text-sm">07859735868 / 0786103198</p>
+                  <p class="text-softGreen text-base mt-5 md:mt-0">Customer Care</p>
+                  <p className="">07859735868 / 0786103198</p>
                 </div>
               </div>
             </div>
@@ -362,7 +362,7 @@ function HomePage() {
             </p>
             <button className="md:mt-12 bg-darkBlue text-gray-100 md:px-6 pl-2 md:py-1  rounded-lg hover:bg-blue-700 hover:text-white transition duration-300">
               <div class="flex items-center justify-center">
-                <p className="text-sm">Lets have you on board</p>
+                <p className="">Lets have you on board</p>
                 <img src="assets/arrow.png" alt="" className="mt-4" />
               </div>
             </button>
@@ -454,7 +454,7 @@ function HomePage() {
       {/* Accreditation */}
       <section id="programme" class="container mx-auto px-5 md:px-20 mt-10 md:mt-20 mb-32">
         <div class="flex flex-col items-center justify-center space-y-4">
-          <h1 className="text-xl md:text-4xl uppercase font-semibold">
+          <h1 className="text-2xl md:text-4xl uppercase font-semibold">
             Accreditions and Partnership
           </h1>
           <img src="assets/accreditions-line.png" alt="" className="" />
