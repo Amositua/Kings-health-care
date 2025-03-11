@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 function HomePage() {
   const [isOpen, setIsOpen] = useState(false);
-  const menuRef = useRef(null); // Reference for menu container
+  const menuRef = useRef(null);
 
   useEffect(() => {
     // Disable scroll restoration behavior
@@ -15,11 +15,6 @@ function HomePage() {
     // Force scroll to the top
     window.scrollTo(0, 0);
   }, []);
-
-  // useEffect(() => {
-  //   window.history.replaceState(null, null, " ");
-  //   window.scrollTo(0, 0);
-  // }, []);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -36,15 +31,49 @@ function HomePage() {
 
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const validateForm = () => {
+    let newErrors = {};
+    if (!formData.name) newErrors.name = "Name is required";
+    if (!formData.email) newErrors.email = "Email is required";
+    if (!formData.message) newErrors.message = "Message cannot be empty";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      alert("Form submitted!");
+    }
+  };
+
   return (
     <div className="bg-white">
       {/* Navigation */}
       {/* <!-- Progress scroll totop --> */}
-    <div class="progress-wrap cursor-pointer">
-        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+      <div class="progress-wrap cursor-pointer">
+        <svg
+          class="progress-circle svg-content"
+          width="100%"
+          height="100%"
+          viewBox="-1 -1 102 102"
+        >
+          <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
         </svg>
-    </div>
+      </div>
       <motion.nav
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -175,11 +204,12 @@ function HomePage() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.2 }}
-            className="flex flex-col md:space-y-8 space-y-6 max-w-4xl"
+            className="flex flex-col lg:w-[60%] w-full md:space-y-8 space-y-6 max-w-4xl"
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
               Get Ready for the Best Professional Attention Ever!
             </h2>
+            <img src="assets/green-line1.png" alt="" className="md:w-[30rem] w-[15rem] md:self-center "/>
             <p className="max-w-md text-base md:text-lg md:font-semibold">
               We Recruit only the best and qualified Medical Practitioners and
               Nurses to Take care of your Health using the best medical
@@ -221,13 +251,15 @@ function HomePage() {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.8 }}
-            className="md:w-1/2 flex justify-center self-center"
+            viewport={{ once: true, amount: 0.5 }}
+            className="md:w-[40%] w-full flex justify-center self-center relative"
           >
+            {/* <img src="assets/green-circle.png" className="absolute w-[35rem] right-12 top-0" alt=""/>
+            <img src="assets/blue-circle.png" className="absolute w-[55rem] " alt=""/> */}
             <img
               src="/assets/doc-photo.png"
               alt="Doctor"
-              className="h-[350px] md:h-full"
+              className="h-[350px] z-10 md:h-full"
             />
           </motion.div>
         </div>
@@ -601,7 +633,7 @@ function HomePage() {
       {/* Accreditation */}
       <section
         id="accreditation"
-        className="container mx-auto px-5 md:px-20 mt-10 md:mt-20 mb-32"
+        className="container mx-auto px-5 md:px-20 mt-10 md:mt-20 mb-10"
       >
         <div className="flex flex-col items-center justify-center space-y-4">
           {/* Heading */}
@@ -651,15 +683,80 @@ function HomePage() {
       </section>
 
       {/* Contact section */}
-      <section id="contact-us" class="container mx-auto px-5">
-        <div class="flex flex-col md:flex-row items-center justify-center">
-          <div class="md:w-1/2 bg-softBlue">
-            <h2 class="text-2xl md:text-4xl font-bold">Contact Us</h2>
+      <section
+        id="contact-us"
+        class="container mx-auto md:max-w-7xl px-5 md:my-20 my-0"
+      >
+        <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0">
+          <div class="md:w-1/2 w-full bg-softBlue md:rounded-l-md md:rounded-r-none rounded-md p-6">
+            <h2 class="text-2xl md:text-4xl font-bold">Get in touch</h2>
             <img src="assets/green-line.png" alt="" className="" />
+            {/* form */}
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Name Input */}
+              <div>
+                <input
+                required
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Full Name"
+                  className="w-full px-4 bg-softBlue placeholder:text-black placeholder:opacity-40 py-1 mt-8 border-b-2 border-black border-opacity-20 focus:outline-none"
+                ></input>
+              </div>
 
-            <div class="flex flex-col space-y-4 mt-4"></div>
+              {/* Email Input */}
+              <div>
+                <input required
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Email"
+                  className="w-full px-4 py-2 bg-softBlue placeholder:text-black mt-5 border-b-2 border-black border-opacity-20 placeholder:opacity-40 focus:outline-none"
+                />
+              </div>
+
+              {/* Message Input */}
+              <div>
+                <textarea required
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Message"
+                  className="w-full px-4 py-2  bg-softBlue placeholder:text-black mt-5 border-b-2 focus:outline-none border-black border-opacity-20 placeholder:opacity-40 overflow-y-hidden"
+                  rows="4"
+                ></textarea>
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                className="w-[30%] bg-blue-600 text-white md:py-2 py-1 rounded-lg hover:bg-blue-700 transition"
+              >
+                Submit
+              </button>
+            </form>{" "}
+          </div>
+          <div class="md:w-1/2 w-full h-[455px]">
+            <iframe
+              title="Google Maps Location"
+              className="w-full h-full rounded-r-md"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2544.6420448839117!2d-4.1436297242233655!3d50.373228792921985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x486c934b791dff07%3A0xbc2cdbd5c3284625!2s27%20Mayflower%20St%2C%20Plymouth%20PL1%201QJ%2C%20UK!5e0!3m2!1sen!2sng!4v1713532543743!5m2!1sen!2sng"
+              frameborder="0"
+              class="google-maps"
+              allowfullscreen=""
+              aria-hidden="false"
+              tabindex="0"
+            ></iframe>
           </div>
         </div>
+      </section>
+
+      {/* footer */}
+      <section id="footer" class="container mx-auto px-5">
+
       </section>
     </div>
   );
