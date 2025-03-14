@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 function HomePage() {
@@ -75,15 +77,16 @@ function HomePage() {
         </svg>
       </div>
       <motion.nav
+      id="navbar"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="relative top-0 container mx-auto px-3 md:py-4 py-3 w-full z-50"
+        className="relative top-0 container mx-auto px-6 md:py-4 py-3 w-full z-50"
       >
         <div class="flex items-center justify-between bg-softBlue my-2 px-5 pl-2 md:pl-5 md:py-3 py-3 rounded-lg bg-opacity-90 backdrop-blur-sm">
           <div class="flex items-center space-x-12">
             {/* Logo */}
-            <div className="flex items-center space-x-1 md:space-x-4">
+            <a href="/" className="flex items-center space-x-1 md:space-x-4">
               <img
                 src="/assets/image.png"
                 alt="Logo"
@@ -92,7 +95,7 @@ function HomePage() {
               <p className="font-bold text-sm md:text-base text-gray-800">
                 Kings Health Care Practitioner Limited
               </p>
-            </div>
+            </a>
 
             {/* Desktop menu */}
 
@@ -100,32 +103,34 @@ function HomePage() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="hidden lg:flex font-medium"
+              className="hidden lg:flex "
             >
-              <a href="#home" class="ml-10 hover:text-softGreen">
+              <a href="#navbar" class="ml-10 hover:text-softGreen">
                 Home
               </a>
-              <a href="#services" class="ml-10 hover:text-softGreen">
+              <a href="#about-us" class="ml-10 hover:text-softGreen">
                 About Us
               </a>
-              <a href="#about" class=" ml-10 hover:text-softGreen">
+              <a href="#services" class=" ml-10 hover:text-softGreen">
                 Services
               </a>
-              <a href="#contact" class="ml-10 hover:text-softGreen">
+              <a href="#contact-us" class="ml-10 hover:text-softGreen">
                 Contact
               </a>
             </motion.div>
           </div>
 
           <div className="hidden lg:flex">
-            <motion.button
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="bg-darkBlue text-gray-100 px-4 py-2 rounded-lg hover:bg-blue-700 hover:text-white transition duration-300"
-            >
-              Apply Now
-            </motion.button>
+            <Link to="/registration">
+              <motion.button
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="bg-darkBlue text-gray-100 px-4 py-2 rounded-lg hover:bg-blue-700 hover:text-white transition duration-300"
+              >
+                Apply Now
+              </motion.button>
+            </Link>
           </div>
 
           {/* Hamburger Button */}
@@ -148,14 +153,14 @@ function HomePage() {
           >
             <div class="flex flex-col items-center justify-center w-full md:space-y-6 space-y-4 font-semibold rounded-sm">
               <a
-                href="#home"
+                href="#navbar"
                 class="w-full text-center text-sm  hover:text-softGreen"
                 onClick={() => setIsOpen(!isOpen)}
               >
                 Home
               </a>
               <a
-                href="#about"
+                href="#about-us"
                 class="w-full text-center text-sm hover:text-softGreen"
                 onClick={() => setIsOpen(!isOpen)}
               >
@@ -169,7 +174,7 @@ function HomePage() {
                 Services
               </a>
               <a
-                href="#services"
+                href="#contact-us"
                 class="w-full text-center text-sm hover:text-softGreen"
                 onClick={() => setIsOpen(!isOpen)}
               >
@@ -181,7 +186,9 @@ function HomePage() {
                 class="md:w-1/2 w-[100px] text-sm py-1 md:py-3 border-t border-gray-400 text-center rounded-full bg-darkBlue text-gray-100 hover:bg-blue-700 hover:text-white transition duration-300 "
                 onClick={() => setIsOpen(!isOpen)}
               >
+                <Link to='/registration'>
                 Apply Now
+                </Link>
               </a>
             </div>
           </motion.div>
@@ -209,7 +216,11 @@ function HomePage() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
               Get Ready for the Best Professional Attention Ever!
             </h2>
-            <img src="assets/green-line1.png" alt="" className="md:w-[30rem] w-[15rem] md:self-center "/>
+            <img
+              src="assets/green-line1.png"
+              alt=""
+              className="md:w-[30rem] w-[15rem] md:self-center "
+            />
             <p className="max-w-md text-base md:text-lg md:font-semibold">
               We Recruit only the best and qualified Medical Practitioners and
               Nurses to Take care of your Health using the best medical
@@ -217,7 +228,9 @@ function HomePage() {
             </p>
             <div className="flex justify-between items-center md:justify-start md:space-x-20 space-x-5">
               <button className="flex justify-center items-center w-[55%] md:w-40 bg-darkBlue text-gray-100 px-1 py-1 md:py-1 rounded-lg hover:bg-blue-700 hover:text-white transition duration-300 md:px-6">
-                <p className="w-[90%] ">Get in touch</p>
+                <a href="#contact-us" className="w-[90%] ">
+                  Get in touch
+                </a>
                 <div className="w-[20%]">
                   <img src="assets/arrow.png" alt="" className="mt-3" />
                 </div>
@@ -233,7 +246,19 @@ function HomePage() {
                   <p className="text-softGreen text-base mt-5 md:mt-0">
                     Customer Care
                   </p>
-                  <p className="">07859735868 / 0786103198</p>
+                  <p className="">
+                    <a href="tel:07859735868" className="hover:underline">
+                      07859735868
+                    </a>{" "}
+                    /
+                    <a href="tel:0786103198" className="hover:underline">
+                      0786103198
+                    </a>{" "}
+                    /
+                    <a href="tel:08166438809" className="hover:underline">
+                      08166438809
+                    </a>
+                  </p>
                 </div>
               </div>
             </div>
@@ -254,8 +279,16 @@ function HomePage() {
             viewport={{ once: true, amount: 0.5 }}
             className="md:w-[40%] w-full flex justify-center self-center relative"
           >
-            {/* <img src="assets/green-circle.png" className="absolute w-[35rem] right-12 top-0" alt=""/>
-            <img src="assets/blue-circle.png" className="absolute w-[55rem] " alt=""/> */}
+            <img
+              src="assets/green-circle.png"
+              className="absolute w-[19rem] md:w-0 sm:w-0 xl:w-0 top-0 left-12 lg:-left-[2.8rem] 2xl:w-[35rem] "
+              alt=""
+            />
+            <img
+              src="assets/blue-circle.png"
+              className="absolute md:w-0 sm:w-0 xl:w-0 2xl:w-[30rem] w-[15rem] top-8 left-[4.7rem] lg:left-0 lg:top-10 lg:right-[4.35rem]"
+              alt=""
+            />
             <img
               src="/assets/doc-photo.png"
               alt="Doctor"
@@ -266,55 +299,131 @@ function HomePage() {
       </motion.section>
 
       {/* Services */}
-      <section id="services" className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="flex flex-col md:flex-row items-center justify-center md:space-x-8 bg-lightBlue py-6 px-5 rounded-md space-y-4 md:space-y-0"
-        >
-          {[1, 2, 3].map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 * index, duration: 0.6 }}
-              viewport={{ once: true }}
-              className="flex flex-col items-center space-y-4 bg-white py-4 px-6 rounded-md md:w-1/3"
-            >
-              <motion.img
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                src="assets/service-icon1.png"
-                alt=""
-                className="h-[60px] md:h-full"
-              />
-              <h3>Specialty Services</h3>
-              <p className="text-center text-md md:text-base max-w-xs">
-                We are constantly striving to redefine the standard of
-                excellence in everything we do.
-              </p>
-              <motion.a
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.5, duration: 0.6 }}
-                viewport={{ once: true }}
-                href="#service"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="flex">
-                  <p>Learn More</p>
-                  <img src="assets/green-arrow.png" alt="" />
-                </div>
-              </motion.a>
-            </motion.div>
-          ))}
+      <section id="services" class="container mx-auto px-6">
+      <motion.div
+  initial={{ opacity: 0, y: 50 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6 }}
+  viewport={{ once: true }}
+  class="flex flex-col md:flex-row items-center justify-center md:space-x-8  bg-lightBlue py-6 px-5 rounded-md space-y-4 md:space-y-0"
+>
+          {/* box 1 */}
+          <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2 , duration: 0.6 }}
+      viewport={{ once: true }}
+      class="flex flex-col items-center space-y-4 bg-white py-4 px-6 rounded-md md:w-1/3"
+    >
+       <motion.img
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            src="assets/service-icon1.png"
+            alt='services'
+            className="h-[60px] md:h-full"
+          />
+            <h3 className="text-lg font-semibold">Specialty Services</h3>
+            <p className="text-center text-md md:text-base max-w-xs">
+              We are constantly striving to redefine the standard of excellence
+              in everything we do.
+            </p>
+            <motion.a
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 0.6 }}
+        viewport={{ once: true }}
+        href="#vision"
+        // target="_blank"
+        rel="noopener noreferrer"
+        className="text-softGreen hover:underline"
+      >  
+                  <div class="flex">
+                <p>Learn More</p>
+                <img src="assets/green-arrow.png" alt="" />
+              </div>
+            </motion.a>
+          </motion.div>
+
+          {/* box 2 */}
+          <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2 , duration: 0.6 }}
+      viewport={{ once: true }}
+      class="flex flex-col items-center space-y-4 bg-white py-4 px-6 rounded-md md:w-1/3"
+    >
+             <motion.img
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            src="assets/service-icon2.png"
+            alt='services'
+            className="h-[60px] md:h-full"
+          />
+            <h3 className="text-lg font-semibold">Accountable</h3>
+            <p className="text-center max-w-xs">
+            We are Responsible, answerable and transparent in all our dealings with staffs, trainees and patients
+            </p>
+            <motion.a
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 0.6 }}
+        viewport={{ once: true }}
+        href="#vision"
+        // target="_blank"
+        rel="noopener noreferrer"
+        className="text-softGreen hover:underline"
+      >  
+              <div class="flex">
+                <p>Learn More</p>
+                <img src="assets/green-arrow.png" alt="" />
+              </div>
+            </motion.a>
+          </motion.div>
+
+          {/* box 3 */}
+          <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2 , duration: 0.6 }}
+      viewport={{ once: true }}
+      class="flex flex-col items-center space-y-4 bg-white py-4 px-6 rounded-md md:w-1/3"
+    >
+            <motion.img
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            src="assets/service-icon3.png"
+            alt='services'
+            className="h-[60px] md:h-full"
+          />
+            <h3 className="text-lg font-semibold">Reel</h3>
+            <p className="text-center max-w-xs">
+            We are authentic and geniune. we also have staffs to meet one on one in our different branch offices.
+            </p>
+            <motion.a
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 0.6 }}
+        viewport={{ once: true }}
+        href="#vision"
+        // target="_blank"
+        rel="noopener noreferrer"
+        className="text-softGreen hover:underline"
+      >
+              <div class="flex">
+                <p>Learn More</p>
+                <img src="assets/green-arrow.png" alt="" />
+              </div>
+            </motion.a>
+          </motion.div>
         </motion.div>
       </section>
+
 
       {/* training */}
       <section id="training" className="container mx-auto px-6 md:my-24 my-12">
@@ -330,7 +439,7 @@ function HomePage() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="md:max-w-xl max-w-4xl md:ml-4 md:w-1/2 w-full"
+            className="md:max-w-xl max-w-4xl md:ml-4 md:w-[70%] w-full"
           >
             <h6 className="text-2xl md:text-4xl font-bold leading-tight">
               We’re accepting new trainees and we can’t wait to have you in our
@@ -346,15 +455,16 @@ function HomePage() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="mt-10"
+            className="relative md:w-[30%] self-start"
           >
-            <img src="assets/training-image.png" alt="" className="w-full" />
+            <img src="assets/green-gradient.png" alt="" className=" h-full"/>
+            <img src="assets/training-image.png" alt="" className=" absolute left-8 top-8" />
           </motion.div>
         </motion.div>
       </section>
 
       {/* About */}
-      <section id="about" className="container mx-auto px-6">
+      <section id="about-us" className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -380,7 +490,8 @@ function HomePage() {
             className="md:w-[65%]"
           >
             <h2 className="md:text-4xl text-2xl max-w-3xl font-bold leading-tight">
-              Why choose Kings Health care practitioners for your health
+              Why choose Kings Health care practitioners 
+              <img className="md:block hidden 2xl:ml-[15rem]" src="assets/longer-green-line.png" alt=""/> for your health
               training programs.
             </h2>
             <p className="mt-4 mb-4 max-w-xl md:text-lg">
@@ -424,14 +535,14 @@ function HomePage() {
         <div className="flex flex-col md:flex-row items-start justify-between md:space-x-20 md:mx-12">
           {/* Text Content */}
           <motion.div
-            className="md:w-2/3 max-w-lg md:ml-4 space-y-4 md:space-y-12"
+            className="md:w-[70%] max-w-lg md:ml-4 space-y-4 md:space-y-12"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
           >
             <h6 className="text-2xl md:text-4xl font-bold leading-tight">
-              Explore diverse career paths from Nursing to Medical Research.
+              Explore diverse career paths from Nursing to Medical research etc.
             </h6>
             <p className="mt-10 max-w-lg md:text-lg">
               We use only the best quality products in the market to ensure a
@@ -444,26 +555,25 @@ function HomePage() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
+              <Link to='/registration'>
               <div className="flex items-center justify-center">
                 <p>Let's have you on board</p>
                 <img src="assets/arrow.png" alt="Arrow" className="mt-4" />
               </div>
+              </Link>
             </motion.button>
           </motion.div>
 
           {/* Image */}
           <motion.div
-            className="lg:w-1/3 md:w-1/2 mt-10"
+            className="relative md:w-[30%] md:mt-0 mt-10 "
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <img
-              src="assets/personnel2.png"
-              alt="Medical Personnel"
-              className="w-full"
-            />
+            <img src="assets/green-gradient.png" alt="" className=" h-full"/>
+            <img src="assets/personnel2.png" alt="" className=" absolute left-10 top-8 w-[90%]" />
           </motion.div>
         </div>
       </section>
@@ -569,7 +679,7 @@ function HomePage() {
 
       {/* About us */}
       <section
-        id="about-us"
+        id="vision"
         className="container mx-auto px-5 mt-10 md:mt-20 bg-lightBlue"
       >
         <div className="flex flex-col space-y-12 md:px-12 py-10">
@@ -602,7 +712,7 @@ function HomePage() {
 
           {/* Mission Section */}
           <motion.div
-            className="flex flex-col items-start justify-center"
+            className="flex flex-col items-start justify-center space-y-2"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
@@ -666,11 +776,7 @@ function HomePage() {
             viewport={{ once: true }}
           >
             <p>
-              Kings Health Practitioner Limited is an international health care
-              company with headquarters in England and Nigeria. At Kings Health
-              Practitioners Limited, we understand the importance of
-              accreditations, which is why we ensure that we meet the specific
-              standards and criteria for quality and safety performance.
+            Kings Health practitioner Limited is an international health care company that has its headquarter in England and Nigeria. At Kings Health practitioners Llimited, we understand the importance of accreditions that is why we ensure that we meet the specific standards and criteria for a quality, safety performance.
             </p>
 
             <p>
@@ -683,9 +789,13 @@ function HomePage() {
       </section>
 
       {/* Contact section */}
-      <section
+      <motion.section
         id="contact-us"
-        class="container mx-auto md:max-w-7xl px-5 md:my-20 my-0"
+        className="container mx-auto px-5 md:max-w-6xl md:my-16 my-0"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true }}
       >
         <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0">
           <div class="md:w-1/2 w-full bg-softBlue md:rounded-l-md md:rounded-r-none rounded-md p-6">
@@ -696,7 +806,7 @@ function HomePage() {
               {/* Name Input */}
               <div>
                 <input
-                required
+                  required
                   type="text"
                   name="name"
                   value={formData.name}
@@ -708,7 +818,8 @@ function HomePage() {
 
               {/* Email Input */}
               <div>
-                <input required
+                <input
+                  required
                   type="email"
                   name="email"
                   value={formData.email}
@@ -720,7 +831,8 @@ function HomePage() {
 
               {/* Message Input */}
               <div>
-                <textarea required
+                <textarea
+                  required
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
@@ -733,7 +845,7 @@ function HomePage() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-[30%] bg-blue-600 text-white md:py-2 py-1 rounded-lg hover:bg-blue-700 transition"
+                className="w-[20%] bg-blue-600 text-white md:py-2 py-1 rounded-lg hover:bg-blue-700 transition"
               >
                 Submit
               </button>
@@ -743,23 +855,194 @@ function HomePage() {
             <iframe
               title="Google Maps Location"
               className="w-full h-full rounded-r-md"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2544.6420448839117!2d-4.1436297242233655!3d50.373228792921985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x486c934b791dff07%3A0xbc2cdbd5c3284625!2s27%20Mayflower%20St%2C%20Plymouth%20PL1%201QJ%2C%20UK!5e0!3m2!1sen!2sng!4v1713532543743!5m2!1sen!2sng"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.322866731237!2d0.7047512763204434!3d51.54397840803093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8d9b28430521f%3A0x679f3bbaf6c8173d!2sCumberland%20House%2C%2024-28%20Baxter%20Ave%2C%20Southend-on-Sea%20SS2%206HZ%2C%20UK!5e0!3m2!1sen!2sng!4v1741890240261!5m2!1sen!2sng"
               frameborder="0"
-              class="google-maps"
+              // class="google-maps"
               allowfullscreen=""
               aria-hidden="false"
               tabindex="0"
             ></iframe>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* footer */}
-      <section id="footer" class="container mx-auto px-5">
+      <motion.section
+        id="footer"
+        className="bg-softBlue"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true }}
+      >
+        <div class="flex flex-col md:flex-row items-center justify-between px-5 pt-6 pb-14 space-x-0 space-y-8 md:space-y-0 md:spaxe-x-4">
+          {/* col 1 */}
+          <div class="flex flex-col space-y-4 md:space-y-6 self-start">
+            <div class="flex flex-col">
+              <h3 className="font-semibold text-lg">Be in the Know</h3>
+              <p className="max-w-xl">
+                Get an opportunity to work overseas and in different African
+                countries by training and earning a certificate with us at Kings
+                Health Care Practitioners Limited
+              </p>
+            </div>
 
-      </section>
+            <div class="flex items-center space-x-2">
+              <img src="assets/image.png" alt="" className="h-[40px]" />
+              <h2 className="font-semibold text-lg">
+                Kings Health Care Practitioner Limited
+              </h2>
+            </div>
+          </div>
+
+          {/* col 2 */}
+          <div class="flex flex-col space-y-3 self-start">
+            <div class="">
+            <h3 className="font-semibold text-lg">Services</h3>
+            <p>Trainings</p>
+            </div>
+            <p>Job recruitment</p>
+            <p>Hire emergency staffs and Health care assistance</p>
+          </div>
+
+          {/* col 3 */}
+          <div class="flex flex-col self-start space-y-2">
+            <div class="flex flex-col">
+              <h3 className="font-semibold text-lg">Help</h3>
+                <a href="mailto:Admin@kingshealthcarepractitioner.com">
+                  Admin@kingshealthcarepractitioner.com
+                </a>
+                </div>
+                <a href="mailto:Kingshealthcarepractitioner001@gmail.com">
+                  Kingshealthcarepractitioner001@gmail.com
+                </a>
+              
+            
+          </div>
+
+          {/* col 4 */}
+          <div class="flex flex-col space-y-2 self-start">
+            <div class="flex flex-col">
+              <h3 className="font-semibold text-lg">Address</h3>
+              <p>3, Nicon Crescent, Independence Layout, Enugu, Nigeria</p>
+            </div>
+            <p>
+              Cumber land house, 24-28 Baxter Avenue, South end- on- sea.
+              England.
+            </p>
+            <div class="flex flex-col space-y-2">
+            <h2 className="mt-2">Follow us</h2>
+              <div className="flex space-x-4">
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaFacebook className="text-2xl hover:text-blue-900" />
+                </a>
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaTwitter className="text-2xl hover:text-blue-900" />
+                </a>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaInstagram className="text-2xl hover:text-blue-900" />
+                </a>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaLinkedin className="text-2xl hover:text-blue-900" />
+                </a>
+              </div>
+              </div>
+          </div>
+        </div>
+        <hr className="border-t-1 border-black my-3" />
+        <motion.p
+          className="text-center pb-3"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          All rights reserved ® Kings Health care practitioners limited.com |
+          Terms and conditions apply!
+        </motion.p>
+      </motion.section>
     </div>
   );
 }
 
 export default HomePage;
+
+// save for refernce
+// gpt service section
+// {/* Services */}
+/* <section id="services" className="container mx-auto px-6">
+<motion.div
+  initial={{ opacity: 0, y: 50 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6 }}
+  viewport={{ once: true }}
+  class="flex flex-col md:flex-row items-center justify-center md:space-x-8  bg-lightBlue py-6 px-5 rounded-md space-y-4 md:space-y-0"
+>
+  {[
+    {
+      title: "Specialty Services",
+      description:
+        "We are constantly striving to redefine the standard of excellence in everything we do with passion dedication.",
+      image: "assets/service-icon1.png",
+    },
+    {
+      title: "Accountable",
+      description:
+        "We are Responsible, answerable and transparent in all our dealings with staffs, trainees and patients",
+      image: "assets/service-icon2.png",
+    },
+    {
+      title: "Real",
+      description:
+        "We are authentic and geniune. we also have staffs to meet one on one in our different branch offices.",
+      image: "assets/service-icon3.png",
+    },
+  ].map((services, index) => (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2 * index, duration: 0.6 }}
+      viewport={{ once: true }}
+      class="flex flex-col items-center space-y-4 bg-white py-4 px-6 rounded-md md:w-1/3"
+    >
+     
+      <h3 className="text-2xl font-semibold">{services.title}</h3>
+      <p className="text-center text-md md:text-base max-w-xs">
+        {services.description}
+      </p>
+      <motion.a
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 0.6 }}
+        viewport={{ once: true }}
+        href="#vision"
+        // target="_blank"
+        rel="noopener noreferrer"
+        className="text-softGreen hover:underline"
+      >
+        <div className="flex">
+          <p>Learn More</p>
+          <img src="assets/green-arrow.png" alt="" />
+        </div>
+      </motion.a>
+    </motion.div>
+  ))}
+</motion.div>
+</section> */
