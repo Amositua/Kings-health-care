@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+  box-shadow: 0 0 0px 1000px white inset !important;
+  color: #000 !important; /* Adjust text color */
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -21,56 +31,8 @@ code {
     monospace;
 }
 
-.hamburger {
-  cursor: pointer;
-  width: 24px;
-  height: 16px;
-  transition: all 0.25s;
-  position: relative;
-}
-
-.hamburger-top,
-.hamburger-middle,
-.hamburger-bottom {
-  content: '';
-  position: absolute;
-  width: 24px;
-  height: 3px;
-  top: 0;
-  left: 0;
-  background: #333;
-  transform: rotate(0);
-  transition: all 0.5s;
-}
-
-.hamburger-middle {
-  transform: translateY(7px);
-}
-
-.hamburger-bottom {
-  transform: translateY(14px);
-}
-
-.open {
-  transform: rotate(90deg);
-  transform: translateY(0px);
-}
-
-.open .hamburger-top {
-  transform: rotate(45deg) translateY(6px) translateX(6px);
-}
-
-.open .hamburger-middle {
-  display: none;
-}
-
-.open .hamburger-bottom {
-  transform: rotate(-45deg) translateY(6px) translateX(-6px);
-}
-
 
 /* ======= toTop Button style ======= */
-
 .progress-wrap {
   position: fixed;
   bottom: 20px;
