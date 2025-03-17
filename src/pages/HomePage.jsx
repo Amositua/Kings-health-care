@@ -81,7 +81,7 @@ function HomePage() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="relative top-0 container mx-auto px-6 md:py-4 py-3 w-full z-50"
+        className="relative top-0 container mx-auto px-4 md:py-4 py-3 w-full z-50"
       >
         <div class="flex items-center justify-between bg-softBlue my-2 px-5 pl-2 md:pl-5 md:py-3 py-3 rounded-lg bg-opacity-90 backdrop-blur-sm">
           <div class="flex items-center space-x-12">
@@ -181,15 +181,14 @@ function HomePage() {
                 Contact
               </a>
               <div className="bg-gray-400 h-[0.5px] w-full"></div>
-              <a
-                href="#sign-in"
+              <button
                 class="md:w-1/2 w-[100px] text-sm py-1 md:py-3 border-t border-gray-400 text-center rounded-full bg-darkBlue text-gray-100 hover:bg-blue-700 hover:text-white transition duration-300 "
                 onClick={() => setIsOpen(!isOpen)}
               >
                 <Link to='/registration'>
                 Apply Now
                 </Link>
-              </a>
+              </button>
             </div>
           </motion.div>
         )}
@@ -198,7 +197,7 @@ function HomePage() {
       {/* Hero-section */}
       <motion.section
         id="hero"
-        className="container mx-auto px-6"
+        className="container mx-auto px-6 overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -227,7 +226,7 @@ function HomePage() {
               products.
             </p>
             <div className="flex justify-between items-center md:justify-start md:space-x-20 space-x-5">
-              <button className="flex justify-center items-center w-[55%] md:w-40 bg-darkBlue text-gray-100 px-1 py-1 md:py-1 rounded-lg hover:bg-blue-700 hover:text-white transition duration-300 md:px-6">
+              <button className="flex justify-center items-center w-[65%] md:w-40 bg-darkBlue text-gray-100 px-1 py-1 md:py-1 rounded-lg hover:bg-blue-700 hover:text-white transition duration-300 md:px-6">
                 <a href="#contact-us" className="w-[90%] ">
                   Get in touch
                 </a>
@@ -299,13 +298,13 @@ function HomePage() {
       </motion.section>
 
       {/* Services */}
-      <section id="services" class="container mx-auto px-6">
+      <section id="services" class="container mx-auto px-6 overflow-hidden">
       <motion.div
   initial={{ opacity: 0, y: 50 }}
   whileInView={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.6 }}
   viewport={{ once: true }}
-  class="flex flex-col md:flex-row items-center justify-center md:space-x-8  bg-lightBlue py-6 px-5 rounded-md space-y-4 md:space-y-0"
+  class="flex flex-col md:flex-row items-center justify-center md:space-x-8  bg-lightBlue py-6 px-5 rounded-md space-y-4 md:space-y-0 overflow-hidden"
 >
           {/* box 1 */}
           <motion.div
@@ -426,13 +425,13 @@ function HomePage() {
 
 
       {/* training */}
-      <section id="training" className="container mx-auto px-6 md:my-24 my-12">
+      <section id="training" className="container mx-auto px-6 md:my-24 my-12 overflow-hidden">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="flex flex-col md:flex-row md:items-start items-center justify-between md:space-x-20 md:mx-12"
+          className="flex flex-col md:flex-row md:items-start items-center justify-between md:space-x-20 md:mx-12 overflow-hidden"
         >
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -457,14 +456,14 @@ function HomePage() {
             viewport={{ once: true }}
             className="relative md:w-[30%] self-start"
           >
-            <img src="assets/green-gradient.png" alt="" className=" h-full"/>
-            <img src="assets/training-image.png" alt="" className=" absolute left-8 top-8" />
+            <img src="assets/green-gradient.png" alt="" className="w-[19rem] h-full"/>
+            <img src="assets/training-image.png" alt="" className="w-[17rem] absolute left-8 top-8" />
           </motion.div>
         </motion.div>
       </section>
 
       {/* About */}
-      <section id="about-us" className="container mx-auto px-6">
+      <section id="about-us" className="container mx-auto px-6 overflow-hidden">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -531,7 +530,7 @@ function HomePage() {
       </section>
 
       {/* training 2 */}
-      <section id="activity" className="container mx-auto px-6 md:my-24 my-10">
+      <section id="activity" className="container mx-auto px-6 md:my-24 my-10 overflow-hidden">
         <div className="flex flex-col md:flex-row items-start justify-between md:space-x-20 md:mx-12">
           {/* Text Content */}
           <motion.div

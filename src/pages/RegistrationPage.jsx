@@ -1,4 +1,6 @@
 import { useState } from "react";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const RegistrationPage = () => {
   const [formData, setFormData] = useState({
@@ -20,6 +22,10 @@ const RegistrationPage = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const handlePhoneChange = (value) => {
+    setFormData({ ...formData, phone: value });
+  };
+  
   const handleFileChange = (e) => {
     setFormData({ ...formData, idFile: e.target.files[0] });
   };
@@ -36,8 +42,8 @@ const RegistrationPage = () => {
         className="bg-white p-10 rounded-lg w-full max-w-xl"
       >
         <div class="flex items-center justify-center space-x-3">
-          <img src="assets/image.png" alt="" />
-          <h2 className="text-3xl lg:text-5xl font-bold text-center mb-2">
+          <img className="w-10 md:w-10" src="assets/image.png" alt="" />
+          <h2 className="text-[1.7rem] lg:text-5xl font-bold text-center mb-2">
             Registration Form
           </h2>
         </div>
@@ -50,6 +56,7 @@ const RegistrationPage = () => {
           <div class="flex flex-col space-y-2">
             <label className="block text-md lg:text-xl font-semibold ">First Name</label>
             <input
+            required
               type="text"
               name="firstName"
               placeholder="Enter first name"
@@ -61,6 +68,7 @@ const RegistrationPage = () => {
           <div class="flex flex-col space-y-2">
             <label className="block text-md lg:text-xl font-semibold">Last Name</label>
             <input
+            required
               type="text"
               name="lastName"
               placeholder="Enter last name"
@@ -72,6 +80,7 @@ const RegistrationPage = () => {
           <div class="flex flex-col space-y-2">
             <label className="block text-md lg:text-xl font-semibold">Email Address</label>
             <input
+            required
               type="email"
               name="email"
               placeholder="Enter your email"
@@ -83,6 +92,7 @@ const RegistrationPage = () => {
           <div class="flex flex-col space-y-2">
             <label className="block text-md lg:text-xl font-semibold">Gender</label>
             <select
+            required
               name="gender"
               className="w-full p-3 lg:p-5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
               onChange={handleChange}
@@ -94,19 +104,25 @@ const RegistrationPage = () => {
           </div>
 
             <div class="flex flex-col space-y-2">
-          <label className="block text-md lg:text-xl font-semibold">Phone Number</label>
-          <input
-            type="text"
-            name="phone"
-            placeholder="Enter your phone number"
-            className="w-full p-3 lg:p-5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-            onChange={handleChange}
-          />
+            <label className="block text-md lg:text-xl font-semibold">Phone Number</label>
+            <PhoneInput
+              country={"us"} // Default country
+              value={formData.phone}
+              onChange={handlePhoneChange}
+              inputProps={{
+                name: "phone",
+                required: true,
+              }}
+              inputClass="w-full p-6 lg:p-5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
+              containerClass="w-full"
+              buttonClass="!bg-gray-100 border-r border-gray-300"
+            />
           </div>
 
             <div class="flex flex-col space-y-2">
           <label className="block text-md lg:text-xl font-semibold">Country</label>
           <input
+          required
             type="text"
             name="country"
             placeholder="Enter your country"
@@ -116,7 +132,8 @@ const RegistrationPage = () => {
 </div>
 <div class="flex flex-col space-y-2">
           <label className="block text-md lg:text-xl font-semibold">State</label>
-          <input
+          <input 
+          required
             type="text"
             name="state"
             placeholder="Enter your state"
@@ -127,6 +144,7 @@ const RegistrationPage = () => {
 <div class="flex flex-col space-y-2">
           <label className="block text-md lg:text-xl font-semibold">City</label>
           <input
+          required
             type="text"
             name="city"
             placeholder="Enter your city"
@@ -137,6 +155,7 @@ const RegistrationPage = () => {
 <div class="flex flex-col space-y-2">
           <label className="block text-md lg:text-xl font-semibold">Address</label>
           <input
+          required
             type="text"
             name="address"
             placeholder="Enter your address"
@@ -147,6 +166,7 @@ const RegistrationPage = () => {
 <div class="flex flex-col space-y-2">
           <label className="block text-md lg:text-xl font-semibold">ID Type</label>
           <select
+          required
             name="idType"
             className="w-full p-3 lg:p-5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
             onChange={handleChange}
