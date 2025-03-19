@@ -1,8 +1,12 @@
 import { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const RegistrationPage = () => {
+  const [error, setError] = useState(null);
+  
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -17,21 +21,67 @@ const RegistrationPage = () => {
     idFile: null,
   });
 
+  const [errors, setErrors] = useState({}); // State to store validation errors
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+
+    // Remove error message when user starts typing
+    setErrors({ ...errors, [name]: "" });
   };
 
   const handlePhoneChange = (value) => {
     setFormData({ ...formData, phone: value });
-  };
-  
-  const handleFileChange = (e) => {
-    setFormData({ ...formData, idFile: e.target.files[0] });
+    setErrors({ ...errors, phone: "" });
   };
 
-  const handleSubmit = (e) => {
+  const handleFileChange = (e) => {
+    setFormData({ ...formData, idFile: e.target.files[0] });
+    setErrors({ ...errors, idFile: "" });
+  };
+  const  navigate = useNavigate()
+
+  const handleSubmit = async (e) => {
+  
     e.preventDefault();
+    let validationErrors = {};
+
+   
+    // Check for empty fields
+    Object.keys(formData).forEach((key) => {
+      if (!formData[key]) {
+        validationErrors[key] = "This field is required";
+      }
+    });
+
+    // If errors exist, prevent form submission
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+    const data = new FormData();
+    Object.entries(formData).forEach(([key, value]) => {
+      data.append(key, value);
+    });
+
+    try {
+      const response = await axios.post("https://kings-backend-4diu.onrender.com/register", data, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      // alert(response.data.message);
+      console.log(response.data.data)
+      navigate('/congratulation-one');
+    } catch(error){
+      if (error.response) {
+        console.error(error.response.data); // Will log as an object: { error: "File too large" }
+        setError(error.response.data.error); // Display the error in the UI if needed
+      } else {
+        console.error("An unknown error occurred.");
+      }
+    }
+  
     console.log("Form submitted", formData);
   };
 
@@ -41,58 +91,50 @@ const RegistrationPage = () => {
         onSubmit={handleSubmit}
         className="bg-white p-10 rounded-lg w-full max-w-xl"
       >
-        <div class="flex items-center justify-center space-x-3">
-          <img className="w-10 md:w-10" src="assets/image.png" alt="" />
-          <h2 className="text-[1.7rem] lg:text-5xl font-bold text-center mb-2">
-            Registration Form
-          </h2>
+        <div className="flex items-start justify-between">
+          <div class="w-[10%]">
+            <img className="w-10 md:w-full" src="assets/image.png" alt="" />
+          </div>
+          <div class="flex flex-col w-[85%]">
+            <h2 className="lg:text-5xl text-4xl font-bold mb-4">
+              Registration Form
+            </h2>
+            <p className="lg:text-2xl font-bold mb-6">
+              Enter Your Registration Details
+            </p>
+          </div>
         </div>
 
-        <p className="text-center lg:text-lg font-bold mb-4">
-          Enter Your Registration Details
-        </p>
-
         <div className="space-y-6">
-          <div class="flex flex-col space-y-2">
-            <label className="block text-md lg:text-xl font-semibold ">First Name</label>
-            <input
-            required
-              type="text"
-              name="firstName"
-              placeholder="Enter first name"
-              className="w-full p-3 lg:p-5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-              onChange={handleChange}
-            />
-          </div>
+          {/* First Name, Last Name, Email */}
+          {[
+            { label: "First Name", name: "firstName", type: "text" },
+            { label: "Last Name", name: "lastName", type: "text" },
+            { label: "Email Address", name: "email", type: "email" },
+          ].map(({ label, name, type }) => (
+            <div key={name} className="flex flex-col space-y-2">
+              <label className="block text-md lg:text-xl font-semibold">
+                {label}
+              </label>
+              <input
+                type={type}
+                name={name}
+                placeholder={`Enter ${label.toLowerCase()}`}
+                className="w-full p-3 lg:p-5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                onChange={handleChange}
+              />
+              {errors[name] && (
+                <p className="text-red-500 text-sm">{errors[name]}</p>
+              )}
+            </div>
+          ))}
 
-          <div class="flex flex-col space-y-2">
-            <label className="block text-md lg:text-xl font-semibold">Last Name</label>
-            <input
-            required
-              type="text"
-              name="lastName"
-              placeholder="Enter last name"
-              className="w-full p-3 lg:p-5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-              onChange={handleChange}
-            />
-          </div>
-
-          <div class="flex flex-col space-y-2">
-            <label className="block text-md lg:text-xl font-semibold">Email Address</label>
-            <input
-            required
-              type="email"
-              name="email"
-              placeholder="Enter your email"
-              className="w-full p-3 lg:p-5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-              onChange={handleChange}
-            />
-          </div>
-
-          <div class="flex flex-col space-y-2">
-            <label className="block text-md lg:text-xl font-semibold">Gender</label>
+          {/* Gender Field (Moved Up) */}
+          <div className="flex flex-col space-y-2">
+            <label className="block text-md lg:text-xl font-semibold">
+              Gender
+            </label>
             <select
-            required
               name="gender"
               className="w-full p-3 lg:p-5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
               onChange={handleChange}
@@ -100,98 +142,116 @@ const RegistrationPage = () => {
               <option value="">Select your gender</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
+              <option value="Others">Others</option>
             </select>
+            {errors.gender && (
+              <p className="text-red-500 text-sm">{errors.gender}</p>
+            )}
           </div>
 
-            <div class="flex flex-col space-y-2">
-            <label className="block text-md lg:text-xl font-semibold">Phone Number</label>
+          {/* Phone Number Field (Moved Up) */}
+          <div className="flex flex-col space-y-2">
+            <label className="block text-md lg:text-xl font-semibold">
+              Phone Number
+            </label>
             <PhoneInput
-              country={"us"} // Default country
+              country={"gb"}
               value={formData.phone}
               onChange={handlePhoneChange}
               inputProps={{
                 name: "phone",
-                required: true,
               }}
-              inputClass="w-full p-6 lg:p-5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
+              inputClass="!w-full !pl-12 !pr-0 !p-6 lg:!py-8 !border !border-gray-300 !rounded-md focus:!ring-2 focus:!ring-blue-400 focus:!outline-none"
               containerClass="w-full"
-              buttonClass="!bg-gray-100 border-r border-gray-300"
+              buttonClass="!bg-gray-100 !border-r px-4 !border-gray-300"
             />
+            {errors.phone && (
+              <p className="text-red-500 text-sm">{errors.phone}</p>
+            )}
           </div>
 
-            <div class="flex flex-col space-y-2">
-          <label className="block text-md lg:text-xl font-semibold">Country</label>
-          <input
-          required
-            type="text"
-            name="country"
-            placeholder="Enter your country"
-            className="w-full p-3 lg:p-5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-            onChange={handleChange}
-          />
-</div>
-<div class="flex flex-col space-y-2">
-          <label className="block text-md lg:text-xl font-semibold">State</label>
-          <input 
-          required
-            type="text"
-            name="state"
-            placeholder="Enter your state"
-            className="w-full p-3 lg:p-5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-            onChange={handleChange}
-          />
-</div>
-<div class="flex flex-col space-y-2">
-          <label className="block text-md lg:text-xl font-semibold">City</label>
-          <input
-          required
-            type="text"
-            name="city"
-            placeholder="Enter your city"
-            className="w-full p-3 lg:p-5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-            onChange={handleChange}
-          />
-</div>
-<div class="flex flex-col space-y-2">
-          <label className="block text-md lg:text-xl font-semibold">Address</label>
-          <input
-          required
-            type="text"
-            name="address"
-            placeholder="Enter your address"
-            className="w-full p-3 lg:p-5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-            onChange={handleChange}
-          />
-</div>
-<div class="flex flex-col space-y-2">
-          <label className="block text-md lg:text-xl font-semibold">ID Type</label>
-          <select
-          required
-            name="idType"
-            className="w-full p-3 lg:p-5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-            onChange={handleChange}
-          >
-            <option value="">Select ID Type</option>
-            <option value="Passport">Passport</option>
-            <option value="Driver's License">Driver's License</option>
-          </select>
-          </div>
-          <div class="flex flex-col space-y-2">
-          <label className="block text-md lg:text-xl font-semibold">ID File</label>
-          <p className="font-semibold">Note: Only Png, jpg and pdf files are allowed. maximum file size is 5MB</p>
-          <div className="border border-dashed border-gray-400 p-3 lg:p-5 rounded-md flex flex-col items-center justify-center cursor-pointer bg-gray-50 hover:bg-gray-100">
-            
-          <img className="w-16" src="assets/cloud.png" alt="" />
-            <label className="font-medium text-gray-700 cursor-pointer">
-              Upload an image of your ID
-            </label>
-            <input type="file" className="hidden" onChange={handleFileChange} />
-            <div className="text-gray-600 text-sm mt-2">
-              Click to select a file
+          {/* Remaining Fields (Country, State, City, Address) */}
+          {[
+            { label: "Country", name: "country", type: "text" },
+            { label: "State", name: "state", type: "text" },
+            { label: "City", name: "city", type: "text" },
+            { label: "Address", name: "address", type: "text" },
+          ].map(({ label, name, type }) => (
+            <div key={name} className="flex flex-col space-y-2">
+              <label className="block text-md lg:text-xl font-semibold">
+                {label}
+              </label>
+              <input
+                type={type}
+                name={name}
+                placeholder={`Enter ${label.toLowerCase()}`}
+                className="w-full p-3 lg:p-5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                onChange={handleChange}
+              />
+              {errors[name] && (
+                <p className="text-red-500 text-sm">{errors[name]}</p>
+              )}
             </div>
+          ))}
+
+          <div className="flex flex-col space-y-2">
+            <label className="block text-md lg:text-xl font-semibold">
+              ID Type
+            </label>
+            <select
+              name="idType"
+              className={`w-full p-3 lg:p-5 border border-gray-300"
+              } rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none`}
+              onChange={handleChange}
+            >
+              <option value="">Select ID Type</option>
+              <option value="Passport">Passport</option>
+              <option value="Driver's License">Driver's License</option>
+              <option>National Identification Number(NIN)</option>
+            </select>
+            {errors.idType && (
+              <p className="text-red-500 text-sm">{errors.idType}</p>
+            )}
           </div>
+
+          <div className="flex flex-col space-y-2">
+            <label className="block text-md lg:text-xl font-semibold">
+              ID File
+            </label>
+            <p className="font-semibold">
+              Note: Only PNG, JPG, and PDF files are allowed. Max file size: 5MB
+            </p>
+            <div
+              className="border border-dashed border-gray-400 p-3 lg:p-5 rounded-md flex flex-col items-center justify-center cursor-pointer bg-gray-50 hover:bg-gray-100"
+              onClick={() => document.getElementById("fileInput").click()} // Click the hidden input
+            >
+              <img className="w-16" src="assets/cloud.png" alt="" />
+              <label className="font-medium text-gray-700 cursor-pointer">
+                Upload an image of your ID
+              </label>
+              <input
+                id="fileInput"
+                type="file"
+                className="hidden"
+                onChange={handleFileChange}
+                accept="image/png, image/jpeg, application/pdf" // Restrict file types
+              />
+              <div className="text-gray-600 text-sm mt-2">
+                Click to select a file
+              </div>
+            </div>
+            {formData.idFile && (
+              <p className="text-gray-600 text-sm">
+                Selected file: {formData.idFile.name}
+              </p>
+            )}
+            {errors.idFile && (
+              <p className="text-red-500 text-sm">{errors.idFile}</p>
+            )}
           </div>
         </div>
+
+        {error && <p style={{ color: "red" }}>{error}</p>}
 
         <button
           type="submit"
