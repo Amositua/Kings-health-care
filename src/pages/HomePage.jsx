@@ -230,8 +230,8 @@ function HomePage() {
                 <a href="#contact-us" className="w-[90%] ">
                   Get in touch
                 </a>
-                <div className="w-[20%]">
-                  <img src="assets/arrow.png" alt="" className="mt-3" />
+                <div className="w-[23%]">
+                  <img src="assets/small-arrow-2.png" alt="" className="mt-3 w-[500px]" />
                 </div>
               </button>
 
