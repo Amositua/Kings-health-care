@@ -3,10 +3,17 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Select from "react-select";
+import { getNames } from "country-list";
 
 const RegistrationPage = () => {
   const [error, setError] = useState(null);
-  
+
+  const countryOptions = getNames().map((country) => ({
+    label: country,
+    value: country,
+  }));
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -31,6 +38,12 @@ const RegistrationPage = () => {
     setErrors({ ...errors, [name]: "" });
   };
 
+  const handleCountryChange = (selectedOption) => {
+    setFormData({ ...formData, country: selectedOption.value });
+    setErrors({ ...errors, country: "" });
+    console.log(formData.country);
+  };
+
   const handlePhoneChange = (value) => {
     setFormData({ ...formData, phone: value });
     setErrors({ ...errors, phone: "" });
@@ -40,14 +53,12 @@ const RegistrationPage = () => {
     setFormData({ ...formData, idFile: e.target.files[0] });
     setErrors({ ...errors, idFile: "" });
   };
-  const  navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-  
     e.preventDefault();
     let validationErrors = {};
 
-   
     // Check for empty fields
     Object.keys(formData).forEach((key) => {
       if (!formData[key]) {
@@ -66,14 +77,18 @@ const RegistrationPage = () => {
     });
 
     try {
-      const response = await axios.post("https://kings-backend-4diu.onrender.com/register", data, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      const response = await axios.post(
+        "https://kings-backend-4diu.onrender.com/register",
+        data,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
 
       // alert(response.data.message);
-      console.log(response.data.data)
-      navigate('/congratulation-one');
-    } catch(error){
+      console.log(response.data.data);
+      navigate("/congratulation-one");
+    } catch (error) {
       if (error.response) {
         console.error(error.response.data); // Will log as an object: { error: "File too large" }
         setError(error.response.data.error); // Display the error in the UI if needed
@@ -81,7 +96,7 @@ const RegistrationPage = () => {
         console.error("An unknown error occurred.");
       }
     }
-  
+
     console.log("Form submitted", formData);
   };
 
@@ -120,7 +135,7 @@ const RegistrationPage = () => {
                 type={type}
                 name={name}
                 placeholder={`Enter ${label.toLowerCase()}`}
-                className="w-full p-3 lg:p-5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                className="w-full p-3 lg:p-4 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
                 onChange={handleChange}
               />
               {errors[name] && (
@@ -163,16 +178,42 @@ const RegistrationPage = () => {
               }}
               inputClass="!w-full !pl-12 !pr-0 !p-6 lg:!py-8 !border !border-gray-300 !rounded-md focus:!ring-2 focus:!ring-blue-400 focus:!outline-none"
               containerClass="w-full"
-              buttonClass="!bg-gray-100 !border-r px-4 !border-gray-300"
+              buttonClass="!bg-gray-100 !border-r px-12 !border-gray-300"
             />
             {errors.phone && (
               <p className="text-red-500 text-sm">{errors.phone}</p>
             )}
           </div>
 
+          <div className="space-y-6">
+            <div className="flex flex-col space-y-2">
+              <label className="block text-md lg:text-xl font-semibold">
+                Country
+              </label>
+              <Select
+                options={countryOptions}
+                placeholder="Select a country"
+                isSearchable
+                onChange={handleCountryChange}
+                className="w-full"
+                classNamePrefix="react-select"
+                styles={{
+                  control: (provided) => ({
+                    ...provided,
+                    padding: "12px", // Adjust padding here
+                    minHeight: "50px", // Increase height if needed
+                  }),
+                }}
+              />
+            </div>
+            {errors.country && (
+              <p className="text-red-500 text-sm">{errors.country}</p>
+            )}
+          </div>
+
           {/* Remaining Fields (Country, State, City, Address) */}
           {[
-            { label: "Country", name: "country", type: "text" },
+            // { label: "Country", name: "country", type: "text" },
             { label: "State", name: "state", type: "text" },
             { label: "City", name: "city", type: "text" },
             { label: "Address", name: "address", type: "text" },
