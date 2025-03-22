@@ -6,7 +6,7 @@ import CongratulationPageTwo from './pages/CongratulationPageTwo';
 import CoreValuesPage from './pages/CoreValuesPage';
 import AboutPage from './pages/AboutPage';
 import ApplicationFormPage from './pages/ApplicationFormPage';
-import PrivacyPolicy from './pages/PrivacyPolicyPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         <Route path='/core-values' element={<CoreValuesPage />} />        
         <Route path='/about-us' element={<AboutPage />} />        
         <Route path='/application-form' element={<ApplicationFormPage />} />     
-        <Route path='/privacy-policy' element={<PrivacyPolicy />} />     
+        <Route path='/privacy-policy' element={<PrivacyPolicyPage />} />     
 
       </Routes>
     </div>
