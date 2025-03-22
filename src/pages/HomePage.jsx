@@ -77,7 +77,7 @@ function HomePage() {
         </svg>
       </div>
       <motion.nav
-      id="navbar"
+        id="navbar"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
@@ -109,9 +109,9 @@ function HomePage() {
                 Home
               </a>
               <Link to="/about-us">
-              <a href="home" class="ml-10 hover:text-softGreen">
-                About Us
-              </a>
+                <a href="home" class="ml-10 hover:text-softGreen">
+                  About Us
+                </a>
               </Link>
               <a href="#services" class=" ml-10 hover:text-softGreen">
                 Services
@@ -120,16 +120,15 @@ function HomePage() {
                 Contact
               </a>
               <Link to="/core-values">
-              <a href="values" class="ml-10 hover:text-softGreen">
-                Our Values
-              </a>
+                <a href="values" class="ml-10 hover:text-softGreen">
+                  Our Values
+                </a>
               </Link>
               <Link to="/application-form">
-              <a href="values" class="ml-10 hover:text-softGreen">
-                Application Form
-              </a>
+                <a href="values" class="ml-10 hover:text-softGreen">
+                  Application Form
+                </a>
               </Link>
-              
             </motion.div>
           </div>
 
@@ -173,15 +172,15 @@ function HomePage() {
                 Home
               </a>
               <Link to="/about-us">
-              <a
-                href="#about-us"
-                class="w-full text-center text-sm hover:text-softGreen"
-                onClick={() => setIsOpen(!isOpen)}
-              >
-                About Us
-              </a>
+                <a
+                  href="#about-us"
+                  class="w-full text-center text-sm hover:text-softGreen"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  About Us
+                </a>
               </Link>
-              
+
               <a
                 href="#services"
                 class="w-full text-center text-sm hover:text-softGreen"
@@ -197,31 +196,29 @@ function HomePage() {
                 Contact
               </a>
               <Link to="/core-values">
-              <a
-                href="footer"
-                class="w-full text-center text-sm hover:text-softGreen"
-                onClick={() => setIsOpen(!isOpen)}
-              >
-                Our Values
-              </a>
+                <a
+                  href="footer"
+                  class="w-full text-center text-sm hover:text-softGreen"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  Our Values
+                </a>
               </Link>
               <Link to="/application-form">
-              <a
-                href="footer"
-                class="w-full text-center text-sm hover:text-softGreen"
-                onClick={() => setIsOpen(!isOpen)}
-              >
-                Application Form
-              </a>
+                <a
+                  href="footer"
+                  class="w-full text-center text-sm hover:text-softGreen"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  Application Form
+                </a>
               </Link>
               <div className="bg-gray-400 h-[0.5px] w-full"></div>
               <button
                 class="md:w-1/2 w-[100px] text-sm py-1 md:py-3 border-t border-gray-400 text-center rounded-full bg-darkBlue text-gray-100 hover:bg-blue-700 hover:text-white transition duration-300 "
                 onClick={() => setIsOpen(!isOpen)}
               >
-                <Link to='/registration'>
-                Apply Now
-                </Link>
+                <Link to="/registration">Apply Now</Link>
               </button>
             </div>
           </motion.div>
@@ -265,7 +262,11 @@ function HomePage() {
                   Get in touch
                 </a>
                 <div className="w-[23%]">
-                  <img src="assets/small-arrow-2.png" alt="" className="mt-3 w-[500px]" />
+                  <img
+                    src="assets/small-arrow-2.png"
+                    alt=""
+                    className="mt-3 w-[500px]"
+                  />
                 </div>
               </button>
 
@@ -287,9 +288,9 @@ function HomePage() {
                     {/* <a href="tel:0786103198" className="hover:underline">
                       0786103198
                     </a>{" "} */}
-                    
                     <a href="tel:08166438809" className="hover:underline">
-                    {" "} 08166438809
+                      {" "}
+                      08166438809
                     </a>
                   </p>
                 </div>
@@ -333,46 +334,46 @@ function HomePage() {
 
       {/* Services */}
       <section id="" class="container mx-auto px-6 overflow-hidden">
-      <motion.div
-  initial={{ opacity: 0, y: 50 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6 }}
-  viewport={{ once: true }}
-  class="flex flex-col md:flex-row items-center justify-center md:space-x-8  bg-lightBlue py-6 px-5 rounded-md space-y-4 md:space-y-0 overflow-hidden"
->
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          class="flex flex-col md:flex-row items-center justify-center md:space-x-8  bg-lightBlue py-6 px-5 rounded-md space-y-4 md:space-y-0 overflow-hidden"
+        >
           {/* box 1 */}
           <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.2 , duration: 0.6 }}
-      viewport={{ once: true }}
-      class="flex flex-col items-center space-y-4 bg-white py-4 px-6 rounded-md md:w-1/3"
-    >
-       <motion.img
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
             viewport={{ once: true }}
-            src="assets/service-icon1.png"
-            alt='services'
-            className="h-[60px] md:h-full"
-          />
+            class="flex flex-col items-center space-y-4 bg-white py-4 px-6 rounded-md md:w-1/3"
+          >
+            <motion.img
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              src="assets/service-icon1.png"
+              alt="services"
+              className="h-[60px] md:h-full"
+            />
             <h3 className="text-lg font-semibold">Specialty Services</h3>
             <p className="text-center text-md md:text-base max-w-xs">
               We are constantly striving to redefine the standard of excellence
               in everything we do.
             </p>
             <motion.a
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.6 }}
-        viewport={{ once: true }}
-        href="#vision"
-        // target="_blank"
-        rel="noopener noreferrer"
-        className="text-softGreen hover:underline"
-      >  
-                  <div class="flex">
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              viewport={{ once: true }}
+              href="#vision"
+              // target="_blank"
+              rel="noopener noreferrer"
+              className="text-softGreen hover:underline"
+            >
+              <div class="flex">
                 <p>Learn More</p>
                 <img src="assets/green-arrow.png" alt="" />
               </div>
@@ -381,35 +382,36 @@ function HomePage() {
 
           {/* box 2 */}
           <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.2 , duration: 0.6 }}
-      viewport={{ once: true }}
-      class="flex flex-col items-center space-y-4 bg-white py-4 px-6 rounded-md md:w-1/3"
-    >
-             <motion.img
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
             viewport={{ once: true }}
-            src="assets/service-icon2.png"
-            alt='services'
-            className="h-[60px] md:h-full"
-          />
+            class="flex flex-col items-center space-y-4 bg-white py-4 px-6 rounded-md md:w-1/3"
+          >
+            <motion.img
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              src="assets/service-icon2.png"
+              alt="services"
+              className="h-[60px] md:h-full"
+            />
             <h3 className="text-lg font-semibold">Accountable</h3>
             <p className="text-center max-w-xs">
-            We are Responsible, answerable and transparent in all our dealings with staffs, trainees and patients
+              We are Responsible, answerable and transparent in all our dealings
+              with staffs, trainees and patients
             </p>
             <motion.a
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.6 }}
-        viewport={{ once: true }}
-        href="#vision"
-        // target="_blank"
-        rel="noopener noreferrer"
-        className="text-softGreen hover:underline"
-      >  
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              viewport={{ once: true }}
+              href="#vision"
+              // target="_blank"
+              rel="noopener noreferrer"
+              className="text-softGreen hover:underline"
+            >
               <div class="flex">
                 <p>Learn More</p>
                 <img src="assets/green-arrow.png" alt="" />
@@ -419,35 +421,36 @@ function HomePage() {
 
           {/* box 3 */}
           <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.2 , duration: 0.6 }}
-      viewport={{ once: true }}
-      class="flex flex-col items-center space-y-4 bg-white py-4 px-6 rounded-md md:w-1/3"
-    >
-            <motion.img
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
             viewport={{ once: true }}
-            src="assets/service-icon3.png"
-            alt='services'
-            className="h-[60px] md:h-full"
-          />
+            class="flex flex-col items-center space-y-4 bg-white py-4 px-6 rounded-md md:w-1/3"
+          >
+            <motion.img
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              src="assets/service-icon3.png"
+              alt="services"
+              className="h-[60px] md:h-full"
+            />
             <h3 className="text-lg font-semibold">Reel</h3>
             <p className="text-center max-w-xs">
-            We are authentic and geniune. we also have staffs to meet one on one in our different branch offices.
+              We are authentic and geniune. we also have staffs to meet one on
+              one in our different branch offices.
             </p>
             <motion.a
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.6 }}
-        viewport={{ once: true }}
-        href="#vision"
-        // target="_blank"
-        rel="noopener noreferrer"
-        className="text-softGreen hover:underline"
-      >
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              viewport={{ once: true }}
+              href="#vision"
+              // target="_blank"
+              rel="noopener noreferrer"
+              className="text-softGreen hover:underline"
+            >
               <div class="flex">
                 <p>Learn More</p>
                 <img src="assets/green-arrow.png" alt="" />
@@ -457,9 +460,11 @@ function HomePage() {
         </motion.div>
       </section>
 
-
       {/* training */}
-      <section id="training" className="container mx-auto px-6 md:my-24 my-12 overflow-hidden">
+      <section
+        id="training"
+        className="container mx-auto px-6 md:my-24 my-12 overflow-hidden"
+      >
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -490,8 +495,16 @@ function HomePage() {
             viewport={{ once: true }}
             className="relative md:w-[30%] self-start"
           >
-            <img src="assets/green-gradient.png" alt="" className="w-[19rem] h-full"/>
-            <img src="assets/training-image.png" alt="" className="w-[17rem] absolute left-8 top-8" />
+            <img
+              src="assets/green-gradient.png"
+              alt=""
+              className="w-[19rem] h-full"
+            />
+            <img
+              src="assets/training-image.png"
+              alt=""
+              className="w-[17rem] absolute left-8 top-8"
+            />
           </motion.div>
         </motion.div>
       </section>
@@ -523,9 +536,13 @@ function HomePage() {
             className="md:w-[65%]"
           >
             <h2 className="md:text-4xl text-2xl max-w-3xl font-bold leading-tight">
-              Why choose Kings Health care practitioners 
-              <img className="md:block hidden 2xl:ml-[15rem]" src="assets/longer-green-line.png" alt=""/> for your health
-              training programs.
+              Why choose Kings Health care practitioners
+              <img
+                className="md:block hidden 2xl:ml-[15rem]"
+                src="assets/longer-green-line.png"
+                alt=""
+              />{" "}
+              for your health training programs.
             </h2>
             <p className="mt-4 mb-4 max-w-xl md:text-lg">
               We have medical professionals to offer the best teachings to our
@@ -564,7 +581,10 @@ function HomePage() {
       </section>
 
       {/* training 2 */}
-      <section id="activity" className="container mx-auto px-6 md:my-24 my-10 overflow-hidden">
+      <section
+        id="activity"
+        className="container mx-auto px-6 md:my-24 my-10 overflow-hidden"
+      >
         <div className="flex flex-col md:flex-row items-start justify-between md:space-x-20 md:mx-12">
           {/* Text Content */}
           <motion.div
@@ -588,11 +608,15 @@ function HomePage() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Link to='/registration'>
-              <div className="flex items-center justify-center">
-                <p>Let's have you on board</p>
-                <img src="assets/small-arrow.png" alt="Arrow" className="mt-4" />
-              </div>
+              <Link to="/registration">
+                <div className="flex items-center justify-center">
+                  <p>Let's have you on board</p>
+                  <img
+                    src="assets/small-arrow.png"
+                    alt="Arrow"
+                    className="mt-4"
+                  />
+                </div>
               </Link>
             </motion.button>
           </motion.div>
@@ -605,8 +629,12 @@ function HomePage() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <img src="assets/green-gradient.png" alt="" className=" h-full"/>
-            <img src="assets/personnel2.png" alt="" className=" absolute left-10 top-8 w-[90%]" />
+            <img src="assets/green-gradient.png" alt="" className=" h-full" />
+            <img
+              src="assets/personnel2.png"
+              alt=""
+              className=" absolute left-10 top-8 w-[90%]"
+            />
           </motion.div>
         </div>
       </section>
@@ -773,7 +801,6 @@ function HomePage() {
         </div>
       </section>
 
-
       {/* Accreditation */}
       <section
         id="accreditation"
@@ -810,7 +837,11 @@ function HomePage() {
             viewport={{ once: true }}
           >
             <p>
-            Kings Health practitioner Limited is an international health care company that has its headquarter in England and Nigeria. At Kings Health practitioners Llimited, we understand the importance of accreditions that is why we ensure that we meet the specific standards and criteria for a quality, safety performance.
+              Kings Health practitioner Limited is an international health care
+              company that has its headquarter in England and Nigeria. At Kings
+              Health practitioners Llimited, we understand the importance of
+              accreditions that is why we ensure that we meet the specific
+              standards and criteria for a quality, safety performance.
             </p>
 
             <p>
@@ -932,8 +963,8 @@ function HomePage() {
           {/* col 2 */}
           <div class="flex flex-col space-y-3 self-start">
             <div class="">
-            <h3 className="font-semibold text-lg">Services</h3>
-            <p>Trainings</p>
+              <h3 className="font-semibold text-lg">Services</h3>
+              <p>Trainings</p>
             </div>
             <p>Job recruitment</p>
             <p>Hire emergency staffs and Health care assistance</p>
@@ -943,15 +974,13 @@ function HomePage() {
           <div class="flex flex-col self-start space-y-2">
             <div class="flex flex-col">
               <h3 className="font-semibold text-lg">Help</h3>
-                <a href="mailto:Admin@kingshealthcarepractitioner.com">
-                  Admin@kingshealthcarepractitioner.com
-                </a>
-                </div>
-                <a href="mailto:Kingshealthcarepractitioner001@gmail.com">
-                  Kingshealthcarepractitioner001@gmail.com
-                </a>
-              
-            
+              <a href="mailto:Admin@kingshealthcarepractitioner.com">
+                Admin@kingshealthcarepractitioner.com
+              </a>
+            </div>
+            <a href="mailto:Kingshealthcarepractitioner001@gmail.com">
+              Kingshealthcarepractitioner001@gmail.com
+            </a>
           </div>
 
           {/* col 4 */}
@@ -965,7 +994,7 @@ function HomePage() {
               England.
             </p>
             <div class="flex flex-col space-y-2">
-            <h2 className="mt-2">Follow us</h2>
+              <h2 className="mt-2">Follow us</h2>
               <div className="flex space-x-4">
                 <a
                   href="https://facebook.com"
@@ -996,9 +1025,10 @@ function HomePage() {
                   <FaLinkedin className="text-2xl hover:text-blue-900" />
                 </a>
               </div>
-              <Link className="inline-block" to="/">
-<a href="/" className="trans">Privacy Policy</a>       </Link>  
-              </div>
+              <Link className="inline-block" to="/privacy-policy">
+                <p className="trans">Privacy Policy</p>{" "}
+              </Link>
+            </div>
           </div>
         </div>
         <hr className="border-t-1 border-black my-3" />

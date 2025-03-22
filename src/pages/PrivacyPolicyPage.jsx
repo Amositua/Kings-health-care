@@ -10,7 +10,7 @@ function PrivacyPolicyPage() {
           <Link className="inline-block" to="/">
         <img src="assets/image.png" alt="" />
         </Link>          </div>
-          <div class="flex items-center justify-start w-2/3 mr-10 md:mr-0">
+          <div class="flex items-center justify-start md:ml-20 w-2/3 mr-10 md:mr-0">
             <h1 className="text-center px-6 py-2 bg-softBlue md:text-3xl text-2xl font-semibold max-w-xl">
               PRIVACY POLICY
             </h1>
