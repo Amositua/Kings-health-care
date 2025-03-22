@@ -108,15 +108,28 @@ function HomePage() {
               <a href="#navbar" class="ml-10 hover:text-softGreen">
                 Home
               </a>
-              <a href="#about-us" class="ml-10 hover:text-softGreen">
+              <Link to="/about-us">
+              <a href="home" class="ml-10 hover:text-softGreen">
                 About Us
               </a>
+              </Link>
               <a href="#services" class=" ml-10 hover:text-softGreen">
                 Services
               </a>
-              <a href="#contact-us" class="ml-10 hover:text-softGreen">
+              <a href="#footer" class="ml-10 hover:text-softGreen">
                 Contact
               </a>
+              <Link to="/core-values">
+              <a href="values" class="ml-10 hover:text-softGreen">
+                Our Values
+              </a>
+              </Link>
+              <Link to="/application-form">
+              <a href="values" class="ml-10 hover:text-softGreen">
+                Application Form
+              </a>
+              </Link>
+              
             </motion.div>
           </div>
 
@@ -159,6 +172,7 @@ function HomePage() {
               >
                 Home
               </a>
+              <Link to="/about-us">
               <a
                 href="#about-us"
                 class="w-full text-center text-sm hover:text-softGreen"
@@ -166,6 +180,8 @@ function HomePage() {
               >
                 About Us
               </a>
+              </Link>
+              
               <a
                 href="#services"
                 class="w-full text-center text-sm hover:text-softGreen"
@@ -174,12 +190,30 @@ function HomePage() {
                 Services
               </a>
               <a
-                href="#contact-us"
+                href="#footer"
                 class="w-full text-center text-sm hover:text-softGreen"
                 onClick={() => setIsOpen(!isOpen)}
               >
                 Contact
               </a>
+              <Link to="/core-values">
+              <a
+                href="footer"
+                class="w-full text-center text-sm hover:text-softGreen"
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                Our Values
+              </a>
+              </Link>
+              <Link to="/application-form">
+              <a
+                href="footer"
+                class="w-full text-center text-sm hover:text-softGreen"
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                Application Form
+              </a>
+              </Link>
               <div className="bg-gray-400 h-[0.5px] w-full"></div>
               <button
                 class="md:w-1/2 w-[100px] text-sm py-1 md:py-3 border-t border-gray-400 text-center rounded-full bg-darkBlue text-gray-100 hover:bg-blue-700 hover:text-white transition duration-300 "
@@ -246,16 +280,16 @@ function HomePage() {
                     Customer Care
                   </p>
                   <p className="">
-                    <a href="tel:07859735868" className="hover:underline">
-                      07859735868
+                    <a href="tel:07413545843" className="hover:underline">
+                      07413545843
                     </a>{" "}
                     /
-                    <a href="tel:0786103198" className="hover:underline">
+                    {/* <a href="tel:0786103198" className="hover:underline">
                       0786103198
-                    </a>{" "}
-                    /
+                    </a>{" "} */}
+                    
                     <a href="tel:08166438809" className="hover:underline">
-                      08166438809
+                    {" "} 08166438809
                     </a>
                   </p>
                 </div>
@@ -298,7 +332,7 @@ function HomePage() {
       </motion.section>
 
       {/* Services */}
-      <section id="services" class="container mx-auto px-6 overflow-hidden">
+      <section id="" class="container mx-auto px-6 overflow-hidden">
       <motion.div
   initial={{ opacity: 0, y: 50 }}
   whileInView={{ opacity: 1, y: 0 }}
@@ -463,7 +497,7 @@ function HomePage() {
       </section>
 
       {/* About */}
-      <section id="about-us" className="container mx-auto px-6 overflow-hidden">
+      <section id="services" className="container mx-auto px-6 overflow-hidden">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -557,7 +591,7 @@ function HomePage() {
               <Link to='/registration'>
               <div className="flex items-center justify-center">
                 <p>Let's have you on board</p>
-                <img src="assets/arrow.png" alt="Arrow" className="mt-4" />
+                <img src="assets/small-arrow.png" alt="Arrow" className="mt-4" />
               </div>
               </Link>
             </motion.button>
@@ -739,6 +773,7 @@ function HomePage() {
         </div>
       </section>
 
+
       {/* Accreditation */}
       <section
         id="accreditation"
@@ -874,7 +909,7 @@ function HomePage() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <div class="flex flex-col md:flex-row items-center justify-between px-5 pt-6 pb-14 space-x-0 space-y-8 md:space-y-0 md:spaxe-x-4">
+        <div class="flex flex-col md:flex-row items-center justify-between px-5 pt-6 pb-14 md:space-x-10 space-y-8 md:space-y-0 md:spaxe-x-4">
           {/* col 1 */}
           <div class="flex flex-col space-y-4 md:space-y-6 self-start">
             <div class="flex flex-col">
@@ -961,6 +996,8 @@ function HomePage() {
                   <FaLinkedin className="text-2xl hover:text-blue-900" />
                 </a>
               </div>
+              <Link className="inline-block" to="/">
+<a href="/" className="trans">Privacy Policy</a>       </Link>  
               </div>
           </div>
         </div>
