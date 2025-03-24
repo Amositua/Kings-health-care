@@ -1,17 +1,27 @@
 import React from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 function PrivacyPolicyPage() {
+  const topRef = useRef(null);
+  
+  useEffect(() => {
+    // Scroll to top of this specific component when it mounts
+    if (topRef.current) {
+      topRef.current.scrollIntoView({ behavior: "auto" });
+    }
+  }, []);
+
   return (
-    <div className="bg-lightBlue">
+    <div ref={topRef} className="bg-lightBlue">
       <div class="container mx-auto px-5 pt-3 ">
         <div class="flex justify-center items-center pb-4">
           <div className="w-1/3">
-          <Link className="inline-block" to="/">
+          <Link className="inline-block w-10" to="/">
         <img src="assets/image.png" alt="" />
         </Link>          </div>
           <div class="flex items-center justify-start md:ml-20 w-2/3 mr-10 md:mr-0">
-            <h1 className="text-center px-6 py-2 bg-softBlue md:text-3xl text-2xl font-semibold max-w-xl">
+            <h1 className="text-center md:px-6 md:py-2 px-2 py-1 bg-softBlue md:text-3xl text-xl font-semibold max-w-xl md:ml-16 ml-0">
               PRIVACY POLICY
             </h1>
           </div>

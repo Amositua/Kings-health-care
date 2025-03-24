@@ -1,21 +1,34 @@
 import React from "react";
+import { useEffect, useRef } from "react";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 function CoreValuesPage() {
+  const topRef = useRef(null);
+  
+  useEffect(() => {
+    // Scroll to top of this specific component when it mounts
+    if (topRef.current) {
+      topRef.current.scrollIntoView({ behavior: "auto" });
+    }
+  }, []);
+
   return (
-    <div className=" space-y-4 mt-10">
+    <div ref={topRef} className=" space-y-4 mt-4">
         <div class="container mx-auto px-5 md:max-w-6xl text-lg">
+        <Link className="inline-block w-10 md:w-full" to="/">
+        <img src="assets/image.png" alt="" />
+        </Link>
         <div
-        class="flex flex-col items-center justify-center space-y-4"
+        class="flex flex-col items-center justify-center space-y-2"
       >
         <h2 className="text-2xl">CORE VALUES</h2>
-        <img src="assets/green-line.png" alt="" />
+        <img className="w-32" src="assets/short-green-line.png" alt="" />
       </div>
 
       <div
-        class="flex flex-col md:space-y-6 space-y-4 font-semibold"
+        class="flex flex-col md:space-y-6 space-y-4 font-semibold mt-4"
       >
         <p>
           {" "}
@@ -68,7 +81,7 @@ function CoreValuesPage() {
       <section
         className="bg-softBlue"
       >
-        <div class="flex flex-col md:flex-row items-center justify-between px-5 pt-6 pb-14 md:space-x-10 space-y-8 md:space-y-0 md:spaxe-x-4 mt-10">
+        <div class="flex flex-col md:flex-row items-center justify-between px-5 pt-6 pb-6 md:space-x-10 space-y-8 md:space-y-0 md:spaxe-x-4 mt-10">
           {/* col 1 */}
           <div class="flex flex-col space-y-4 md:space-y-6 self-start">
             <div class="flex flex-col">
@@ -153,6 +166,9 @@ function CoreValuesPage() {
                   <FaLinkedin className="text-2xl hover:text-blue-900" />
                 </a>
               </div>
+              <Link className="inline-block pt-2" to="/privacy-policy">
+                Privacy Policy
+              </Link>
             </div>
           </div>
         </div>

@@ -46,6 +46,7 @@ function HomePage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  console.log(formData)
   const validateForm = () => {
     let newErrors = {};
     if (!formData.name) newErrors.name = "Name is required";
@@ -55,12 +56,32 @@ function HomePage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateForm()) {
-      alert("Form submitted!");
+  
+    try {
+      const response = await fetch("http://localhost:8000/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+  
+      const data = await response.json();
+      if (data.success) {
+        alert("Email sent successfully!");
+        setFormData({ name: "", email: "", message: "" }); // Clear form
+      } else {
+        alert("Failed to send email. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred. Please try again later.");
     }
+    console.log("Form submitted:", formData);
   };
+
+
+
 
   return (
     <div className="bg-white">
@@ -140,7 +161,7 @@ function HomePage() {
                 transition={{ duration: 0.5 }}
                 className="bg-darkBlue text-gray-100 px-4 py-2 rounded-lg hover:bg-blue-700 hover:text-white transition duration-300"
               >
-                Apply Now
+                Register Now
               </motion.button>
             </Link>
           </div>
@@ -256,9 +277,9 @@ function HomePage() {
               Nurses to Take care of your Health using the best medical
               products.
             </p>
-            <div className="flex justify-between items-center md:justify-start md:space-x-20 space-x-5">
-              <button className="flex justify-center items-center w-[65%] md:w-40 bg-darkBlue text-gray-100 px-1 py-1 md:py-1 rounded-lg hover:bg-blue-700 hover:text-white transition duration-300 md:px-6">
-                <a href="#contact-us" className="w-[90%] ">
+            <div className="flex justify-between items-center md:justify-start md:space-x-20 space-x-8">
+              <button className="flex justify-center items-center w-[47%] md:w-40 bg-darkBlue text-gray-100 px-0 py-0 md:py-1 rounded-lg hover:bg-blue-700 hover:text-white transition duration-300 md:px-6">
+                <a href="#contact-us" className="w-[80%] md:w-[90%]">
                   Get in touch
                 </a>
                 <div className="w-[23%]">
@@ -270,7 +291,7 @@ function HomePage() {
                 </div>
               </button>
 
-              <div className="flex space-x-3 md:space-x-4 items-center">
+              <div className="flex space-x-3 md:space-x-4 items-center w-[65%]">
                 <img
                   src="/assets/phoneIcon.png"
                   alt=""
@@ -315,12 +336,12 @@ function HomePage() {
           >
             <img
               src="assets/green-circle.png"
-              className="absolute w-[19rem] md:w-0 sm:w-0 xl:w-0 top-0 left-12 lg:-left-[2.8rem] 2xl:w-[35rem] "
+              className="absolute w-[19rem] md:w-0 sm:w-0 xl:w-0 top-0 -left-0 lg:-left-[2.8rem] 2xl:w-[35rem] "
               alt=""
             />
             <img
               src="assets/blue-circle.png"
-              className="absolute md:w-0 sm:w-0 xl:w-0 2xl:w-[30rem] w-[15rem] top-8 left-[4.7rem] lg:left-0 lg:top-10 lg:right-[4.35rem]"
+              className="absolute md:w-0 sm:w-0 xl:w-0 2xl:w-[30rem] w-[15rem] top-8 left-[1.8rem] lg:left-0 lg:top-10 lg:right-[4.35rem]"
               alt=""
             />
             <img
@@ -470,7 +491,7 @@ function HomePage() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="flex flex-col md:flex-row md:items-start items-center justify-between md:space-x-20 md:mx-12 overflow-hidden"
+          className="flex flex-col md:flex-row md:items-start items-center justify-between md:space-x-20 md:mx-12 md:space-y-0 space-y-6 overflow-hidden"
         >
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -483,9 +504,9 @@ function HomePage() {
               We’re accepting new trainees and we can’t wait to have you in our
               midst.
             </h6>
-            <p className="md:mt-10 mt-4 max-w-sm md:text-lg">
-              We use only the best products to transform the future of
-              healthcare by empowering medical excellence.
+            <p className="md:mt-10 mt-4 max-w-xl md:text-lg">
+            We are the recruitment and training agency that you can rely on if you are looking to urgently cover staffing requirements for: staff absences, annual leave, maternity leave, day to day staff shortages, last minute cover. We provided certified staffs to organizations in the public and private sector including nursing/care homes, hospitals and NHS etc. We supply candidates for nursing, support worker, care worker vacancies on Ad Hoc, Temp-to-Perm,  Permanent basis and any other medical service you desire.
+
             </p>
           </motion.div>
           <motion.div
@@ -498,12 +519,12 @@ function HomePage() {
             <img
               src="assets/green-gradient.png"
               alt=""
-              className="w-[19rem] h-full"
+              className="w-[24rem] h-full"
             />
             <img
               src="assets/training-image.png"
               alt=""
-              className="w-[17rem] absolute left-8 top-8"
+              className="w-[29rem] absolute left-8 top-8"
             />
           </motion.div>
         </motion.div>
@@ -550,7 +571,7 @@ function HomePage() {
             </p>
 
             <div className="flex flex-col space-y-4">
-              {[...Array(6)].map((_, index) => (
+              {[...Array(8)].map((_, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: -30 }}
@@ -570,8 +591,10 @@ function HomePage() {
                       "We offer a conducive and healthy learning and working space.",
                       "We certify our trainees with international certificates.",
                       "We place our certified trainees on job opportunities within and outside Nigeria.",
+                      "We assists our trainees financially in traveling out of the country for work.",
                       "We provide emergency staff of nurses and healthcare assistants (HCA) for NHS and private healthcare organizations.",
-                    ][index] || "Additional Benefit"}
+                      "Client and Trainee confidence.",
+                    ][index] || "24/7 hour service"}
                   </p>
                 </motion.div>
               ))}
@@ -588,7 +611,7 @@ function HomePage() {
         <div className="flex flex-col md:flex-row items-start justify-between md:space-x-20 md:mx-12">
           {/* Text Content */}
           <motion.div
-            className="md:w-[70%] max-w-lg md:ml-4 space-y-4 md:space-y-12"
+            className="md:w-[70%] max-w-lg md:ml-4 space-y-4 md:space-y-8"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -597,6 +620,18 @@ function HomePage() {
             <h6 className="text-2xl md:text-4xl font-bold leading-tight">
               Explore diverse career paths from Nursing to Medical research etc.
             </h6>
+            {/* Image Animation */}
+            <div class="flex justify-center items-center">
+          <motion.img
+            src="assets/green-line.png"
+            alt=""
+            className=""
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            viewport={{ once: true }}
+          />
+          </div>
             <p className="mt-10 max-w-lg md:text-lg">
               We use only the best quality products in the market to ensure a
               healthy and effective medical training session.
@@ -604,7 +639,7 @@ function HomePage() {
 
             {/* Call-to-Action Button */}
             <motion.button
-              className="md:mt-12 bg-darkBlue text-gray-100 md:px-6 pl-2 md:py-1 rounded-lg hover:bg-blue-700 hover:text-white transition duration-300"
+              className="ml-0 md:ml-10 md:mt-12 bg-darkBlue text-gray-100 md:px-6 pl-2 md:py-1 rounded-lg hover:bg-blue-700 hover:text-white transition duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -629,11 +664,11 @@ function HomePage() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <img src="assets/green-gradient.png" alt="" className=" h-full" />
+            <img src="assets/green-gradient.png" alt="" className="w-[24rem] h-full" />
             <img
               src="assets/personnel2.png"
               alt=""
-              className=" absolute left-10 top-8 w-[90%]"
+              className=" absolute left-10 top-8 w-[27rem]"
             />
           </motion.div>
         </div>
@@ -741,9 +776,9 @@ function HomePage() {
       {/* About us */}
       <section
         id="vision"
-        className="container mx-auto px-5 mt-10 md:mt-20 bg-lightBlue"
+        className="container mx-auto px-6 mt-10 md:mt-20 bg-lightBlue"
       >
-        <div className="flex flex-col space-y-12 md:px-12 py-10">
+        <div className="flex flex-col space-y-12 md:px-16 md:mx-6 py-10 text-lg">
           {/* Vision Section */}
           <motion.div
             className="flex flex-col items-start space-y-2"
@@ -764,7 +799,7 @@ function HomePage() {
               Vision
             </h3>
             <img src="assets/green-line.png" alt="" className="" />
-            <p className="max-w-3xl">
+            <p className="">
               Setting the standard for excellence in health care by unlocking a
               healthier tomorrow through innovative care, education, and
               community engagements.
@@ -791,7 +826,7 @@ function HomePage() {
               Mission
             </h3>
             <img src="assets/green-line.png" alt="" className="" />
-            <p className="max-w-3xl">
+            <p className="">
               To deliver compassionate, high-quality health care with empathy,
               kindness, and respect by improving the health and well-being of
               our community through accessible and affordable health care
@@ -871,14 +906,17 @@ function HomePage() {
               {/* Name Input */}
               <div>
                 <input
-                  required
+                
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Full Name"
-                  className="w-full px-4 bg-softBlue placeholder:text-black placeholder:opacity-40 py-1 mt-8 border-b-2 border-black border-opacity-20 focus:outline-none"
+                  className="custom-input w-full px-4 bg-softBlue  placeholder:text-black placeholder:opacity-40 py-1 mt-8 border-b-2 border-black border-opacity-20 focus:outline-none"
                 ></input>
+                 {errors && (
+                <p className="text-red-500 text-sm">{errors.name}</p>
+              )}
               </div>
 
               {/* Email Input */}
@@ -890,7 +928,7 @@ function HomePage() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Email"
-                  className="w-full px-4 py-2 bg-softBlue placeholder:text-black mt-5 border-b-2 border-black border-opacity-20 placeholder:opacity-40 focus:outline-none"
+                  className="custom-input w-full px-4 py-2 bg-softBlue placeholder:text-black mt-5 border-b-2 border-black border-opacity-20 placeholder:opacity-40 focus:outline-none"
                 />
               </div>
 
@@ -902,7 +940,7 @@ function HomePage() {
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Message"
-                  className="w-full px-4 py-2  bg-softBlue placeholder:text-black mt-5 border-b-2 focus:outline-none border-black border-opacity-20 placeholder:opacity-40 overflow-y-hidden"
+                  className="custom-input w-full px-4 py-2  bg-softBlue placeholder:text-black mt-5 border-b-2 focus:outline-none border-black border-opacity-20 placeholder:opacity-40 overflow-y-hidden"
                   rows="4"
                 ></textarea>
               </div>
@@ -940,7 +978,7 @@ function HomePage() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <div class="flex flex-col md:flex-row items-center justify-between px-5 pt-6 pb-14 md:space-x-10 space-y-8 md:space-y-0 md:spaxe-x-4">
+        <div class="flex flex-col md:flex-row items-center justify-between px-5 pt-6 pb-6 md:space-x-10 space-y-8 md:space-y-0 md:spaxe-x-4">
           {/* col 1 */}
           <div class="flex flex-col space-y-4 md:space-y-6 self-start">
             <div class="flex flex-col">
@@ -1025,8 +1063,8 @@ function HomePage() {
                   <FaLinkedin className="text-2xl hover:text-blue-900" />
                 </a>
               </div>
-              <Link className="inline-block" to="/privacy-policy">
-                <p className="trans">Privacy Policy</p>{" "}
+              <Link className="inline-block pt-2" to="/privacy-policy">
+                Privacy Policy
               </Link>
             </div>
           </div>

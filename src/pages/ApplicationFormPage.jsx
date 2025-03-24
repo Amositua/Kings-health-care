@@ -1,19 +1,29 @@
 import React from "react";
+import { useEffect, useRef } from "react";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 function ApplicationFormPage() {
+  const topRef = useRef(null);
+  
+  useEffect(() => {
+    // Scroll to top of this specific component when it mounts
+    if (topRef.current) {
+      topRef.current.scrollIntoView({ behavior: "auto" });
+    }
+  }, []);
+
   return (
-    <div className="bg-lightBlue">
+    <div ref={topRef} className="bg-lightBlue">
       <div class="container mx-auto px-5 pt-3 ">
         <div class="flex justify-center items-center pb-4">
           <div className="w-1/3">
-          <Link className="inline-block" to="/">
+          <Link className="inline-block w-10" to="/">
         <img src="assets/image.png" alt="" />
         </Link>          </div>
           <div class="flex items-center justify-start w-2/3 mr-10 md:mr-0">
-            <h1 className="text-center md:text-3xl text-2xl font-semibold max-w-xl">
+            <h1 className="text-center md:text-3xl text-xl font-semibold max-w-xl md:ml-16 ml-0">
               APPLICATION FORM
             </h1>
           </div>
@@ -86,7 +96,7 @@ function ApplicationFormPage() {
 
       {/* footer */}
       <section className="bg-softBlue">
-        <div class="flex flex-col md:flex-row items-center justify-between px-5 pt-6 pb-14 md:space-x-10 space-y-8 md:space-y-0 md:spaxe-x-4 mt-10">
+        <div class="flex flex-col md:flex-row items-center justify-between px-5 pt-6 pb-6 md:space-x-10 space-y-8 md:space-y-0 md:spaxe-x-4 mt-10">
           {/* col 1 */}
           <div class="flex flex-col space-y-4 md:space-y-6 self-start">
             <div class="flex flex-col">
@@ -171,6 +181,9 @@ function ApplicationFormPage() {
                   <FaLinkedin className="text-2xl hover:text-blue-900" />
                 </a>
               </div>
+              <Link className="inline-block pt-2" to="/privacy-policy">
+                Privacy Policy
+              </Link>
             </div>
           </div>
         </div>

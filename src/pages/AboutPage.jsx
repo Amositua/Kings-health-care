@@ -1,18 +1,28 @@
 import React from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 function AboutPage() {
+  const topRef = useRef(null);
+  
+  useEffect(() => {
+    // Scroll to top of this specific component when it mounts
+    if (topRef.current) {
+      topRef.current.scrollIntoView({ behavior: "auto" });
+    }
+  }, []);
+
   return (
-    <div className="bg-lightBlue">
+    <div ref={topRef} className="bg-lightBlue">
       <div class="container mx-auto px-5 pt-3">
-        <Link className="inline-block" to="/">
+        <Link className="inline-block w-10 md:w-full" to="/">
         <img src="assets/image.png" alt="" />
         </Link>
       
         <div class="flex items-center justify-center">
-          <h1 className="text-center text-3xl font-semibold max-w-xl">
+          <h1 className="text-center md:text-3xl text-lg font-semibold max-w-xl">
             WELCOME TO KINGS HEALTH PRACTITIONERS LIMITED
           </h1>
         </div>
@@ -42,7 +52,7 @@ function AboutPage() {
           globe. 
         </p>
 
-        <h3 className="mt-8 font-semibold text-3xl ml-4">What We Do</h3>
+        <h3 className="mt-8 font-semibold text-xl md:text-3xl ml-4">What We Do</h3>
         <p className="font-semibold mt-3">
           We have a diverse selection of skilled and compliant Support workers
           and carers. We can fill roles right across the healthcare spectrum
@@ -105,7 +115,7 @@ function AboutPage() {
           </div>
 
           <div class="flex items-center justify-end mt-6 pb-4">
-            <Link className="bg-blue-500 text-white p-4 rounded-md hover:bg-blue-700" to="/application-form">
+            <Link className="bg-blue-500 text-white md:p-4 p-2 rounded-md hover:bg-blue-700" to="/application-form">
                 APPLICATION FORM
             </Link>
         </div>
@@ -118,7 +128,7 @@ function AboutPage() {
         <section
         className="bg-softBlue"
       >
-        <div class="flex flex-col md:flex-row items-center justify-between px-5 pt-6 pb-14 md:space-x-10 space-y-8 md:space-y-0 md:spaxe-x-4 mt-10">
+        <div class="flex flex-col md:flex-row items-center justify-between px-5 pt-6 pb-6 md:space-x-10 space-y-8 md:space-y-0 md:spaxe-x-4 mt-10">
           {/* col 1 */}
           <div class="flex flex-col space-y-4 md:space-y-6 self-start">
             <div class="flex flex-col">
@@ -202,7 +212,11 @@ function AboutPage() {
                 >
                   <FaLinkedin className="text-2xl hover:text-blue-900" />
                 </a>
+                
               </div>
+              <Link className="inline-block pt-2" to="/privacy-policy">
+                Privacy Policy
+              </Link>
             </div>
           </div>
         </div>

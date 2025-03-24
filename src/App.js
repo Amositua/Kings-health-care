@@ -1,4 +1,5 @@
 import {Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
 import HomePage from './pages/HomePage';
 import RegistrationPage from './pages/RegistrationPage';
 import CongratulationPageOne from './pages/CongratulationPageOne';
@@ -9,6 +10,10 @@ import ApplicationFormPage from './pages/ApplicationFormPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 
 function App() {
+  useEffect(() => {
+    // Prevent the browser from restoring the previous scroll position
+    window.history.scrollRestoration = "manual";
+  }, []);
   return (
     <div>
       <Routes>

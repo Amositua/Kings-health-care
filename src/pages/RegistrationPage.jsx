@@ -1,12 +1,22 @@
 import { useState } from "react";
+import { useEffect, useRef } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import Select from "react-select";
 import { getNames } from "country-list";
 
 const RegistrationPage = () => {
+  const topRef = useRef(null);
+
+  useEffect(() => {
+    // Scroll to top of this specific component when it mounts
+    if (topRef.current) {
+      topRef.current.scrollIntoView({ behavior: "auto" });
+    }
+  }, []);
+
   const [error, setError] = useState(null);
 
   const countryOptions = getNames().map((country) => ({
@@ -101,17 +111,22 @@ const RegistrationPage = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div
+      ref={topRef}
+      className="flex justify-center items-center min-h-screen bg-gray-100"
+    >
       <form
         onSubmit={handleSubmit}
         className="bg-white p-10 rounded-lg w-full max-w-xl"
       >
         <div className="flex items-start justify-between">
-          <div class="w-[10%]">
-            <img className="w-10 md:w-full" src="assets/image.png" alt="" />
+          <div class="w-[15%]">
+            <Link className="w-12 md:w-full" to="/">
+              <img src="assets/image.png" alt="" />
+            </Link>
           </div>
-          <div class="flex flex-col w-[85%]">
-            <h2 className="lg:text-5xl text-4xl font-bold mb-4">
+          <div class="flex flex-col w-[83%]">
+            <h2 className="lg:text-5xl md:text-4xl text-[1.7rem] font-bold mb-4">
               Registration Form
             </h2>
             <p className="lg:text-2xl font-bold mb-6">
