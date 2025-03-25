@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 function AboutPage() {
   const topRef = useRef(null);
-  
+
   useEffect(() => {
     // Scroll to top of this specific component when it mounts
     if (topRef.current) {
@@ -18,9 +18,9 @@ function AboutPage() {
     <div ref={topRef} className="bg-lightBlue">
       <div class="container mx-auto px-5 pt-3">
         <Link className="inline-block w-10 md:w-full" to="/">
-        <img src="assets/image.png" alt="" />
+          <img src="assets/image.png" alt="" />
         </Link>
-      
+
         <div class="flex items-center justify-center">
           <h1 className="text-center md:text-3xl text-lg font-semibold max-w-xl">
             WELCOME TO KINGS HEALTH PRACTITIONERS LIMITED
@@ -52,7 +52,9 @@ function AboutPage() {
           globe. 
         </p>
 
-        <h3 className="mt-8 font-semibold text-xl md:text-3xl ml-4">What We Do</h3>
+        <h3 className="mt-8 font-semibold text-xl md:text-3xl ml-4">
+          What We Do
+        </h3>
         <p className="font-semibold mt-3">
           We have a diverse selection of skilled and compliant Support workers
           and carers. We can fill roles right across the healthcare spectrum
@@ -79,23 +81,25 @@ function AboutPage() {
 
               <p className="mt-4">
                 Whether you’re recruiting for healthcare staff, or looking for
-                your new healthcare job, PLUS Recruitment is perfectly
-                positioned to help you in your search. Trust us to find People
-                with The Right Skills and experts in nursing & care.
+                your new healthcare job, Kings Health Practitioner Limited is
+                perfectly positioned to help you in your search. Trust us to
+                find People with The Right Skills and experts in nursing & care.
               </p>
             </div>
           </div>
 
           <div class="flex flex-col md:flex-row justify-between mt-6 space-y-4 md:space-y-0">
             <div class="md:w-[45%] w-full">
-              <h4 className="text-md text-blue-500">Need A Nurse/Support worker/Carer</h4>
+              <h4 className="text-md text-blue-500">
+                Need A Nurse/Support worker/Carer
+              </h4>
 
               <p className="mt-4">
-                We have a diverse selection of skilled and compliant  nurses and
-                carers. We can fill roles right across the healthcare spectrum
-                24/7. We offer competitive rates, flexible hours, free training,
-                join us and we will  find your ideal job to suit your needs, in
-                your local area
+                We have a diverse selection of skilled and compliant nurses and
+                care givers. We can fill roles right across the healthcare
+                spectrum 24/7. We offer competitive rates, flexible hours, free
+                training, join us and we will  find your ideal job to suit your
+                needs, in your local area
               </p>
             </div>
 
@@ -105,29 +109,69 @@ function AboutPage() {
               </h4>
 
               <p className="mt-4">
-                PLUS Recruitment is assisting in recruiting oversees nurses,
-                carers and health practitioners who desire to work in the Uk. <br/>
-                We also offer professional assistance to individuals and
-                institutions wanting to launch their own successful care agency
-                company.
+                Kings Health practitoner Limited is assisting in recruiting
+                oversees nurses, care givers and health practitioners who desire
+                to work in the Uk.  We also offer professional assistance to
+                individuals and institutions wanting to launch their own
+                successful care agency company.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex flex-col md:flex-row justify-between mt-6 space-y-4 md:space-y-0">
+            <div class="md:w-[45%] w-full">
+              <h4 className="text-md text-blue-500">
+                Kings Health Care Practitioners Limited
+              </h4>
+
+              <p className="mt-4">
+                <ul className="list-disc ml-6">
+                  <li>
+                    Provision of last minute temporary cover 24/7, 365 days a
+                    year
+                  </li>
+                  <li>Full UK coverage</li>
+                  <li>Comparative competitive rates</li>
+                  <li>Rigorous vetting process</li>
+                  <li>Full NHS compliance</li>
+                  <li>Annual DBS checks</li>
+                  <li>In-house registration system</li>
+                  <li>Dedicated booking consultants</li>
+                  <li>Last minute emergency cover</li>
+                </ul>
+              </p>
+            </div>
+
+            <div class="md:w-[50%] w-full">
+              <h4 className="text-md text-blue-500">
+                Recruitment screening Process{" "}
+              </h4>
+
+              <p className="mt-4">
+                At Kings Health Practitioners Limited we ensure that regulatory
+                requirements in areas such as candidate vetting and training are
+                met as well as candidates health status will be check thoroughly
+                checked . All our candidates are fully compliant and vetted
+                according to all national and International Framework
+                guidelines. We provide nurses and health care assistants to
+                those who require healthcare professional services and care.
               </p>
             </div>
           </div>
 
           <div class="flex items-center justify-end mt-6 pb-4">
-            <Link className="bg-blue-500 text-white md:p-4 p-2 rounded-md hover:bg-blue-700" to="/application-form">
-                APPLICATION FORM
+            <Link
+              className="bg-blue-500 text-white md:p-4 p-2 rounded-md hover:bg-blue-700"
+              to="/application-form"
+            >
+              APPLICATION FORM
             </Link>
+          </div>
         </div>
-        </div>
-
-        
       </div>
-      
-        {/* footer */}
-        <section
-        className="bg-softBlue"
-      >
+
+      {/* footer */}
+      <section className="bg-softBlue">
         <div class="flex flex-col md:flex-row items-center justify-between px-5 pt-6 pb-6 md:space-x-10 space-y-8 md:space-y-0 md:spaxe-x-4 mt-10">
           {/* col 1 */}
           <div class="flex flex-col space-y-4 md:space-y-6 self-start">
@@ -212,7 +256,6 @@ function AboutPage() {
                 >
                   <FaLinkedin className="text-2xl hover:text-blue-900" />
                 </a>
-                
               </div>
               <Link className="inline-block pt-2" to="/privacy-policy">
                 Privacy Policy

@@ -21,7 +21,7 @@ function PrivacyPolicyPage() {
         <img src="assets/image.png" alt="" />
         </Link>          </div>
           <div class="flex items-center justify-start md:ml-20 w-2/3 mr-10 md:mr-0">
-            <h1 className="text-center md:px-6 md:py-2 px-2 py-1 bg-softBlue md:text-3xl text-xl font-semibold max-w-xl md:ml-16 ml-0">
+            <h1 className="text-center md:px-6 md:py-2 px-2 py-1 border-t-4 border-t-gray-400 border-b-4 border-b-gray-400 md:text-3xl text-xl font-semibold max-w-2xl md:ml-16 ml-0 ">
               PRIVACY POLICY
             </h1>
           </div>

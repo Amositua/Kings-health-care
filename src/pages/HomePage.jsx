@@ -60,7 +60,7 @@ function HomePage() {
     e.preventDefault();
   
     try {
-      const response = await fetch("http://localhost:8000/send-email", {
+      const response = await fetch("https://kings-backend-4diu.onrender.com/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -384,6 +384,7 @@ function HomePage() {
               We are constantly striving to redefine the standard of excellence
               in everything we do.
             </p>
+            <Link to="/privacy-policy">
             <motion.a
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -399,6 +400,8 @@ function HomePage() {
                 <img src="assets/green-arrow.png" alt="" />
               </div>
             </motion.a>
+            </Link>
+            
           </motion.div>
 
           {/* box 2 */}
@@ -423,6 +426,7 @@ function HomePage() {
               We are Responsible, answerable and transparent in all our dealings
               with staffs, trainees and patients
             </p>
+            <Link to="/privacy-policy">
             <motion.a
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -438,6 +442,8 @@ function HomePage() {
                 <img src="assets/green-arrow.png" alt="" />
               </div>
             </motion.a>
+            </Link>
+            
           </motion.div>
 
           {/* box 3 */}
@@ -462,6 +468,7 @@ function HomePage() {
               We are authentic and geniune. we also have staffs to meet one on
               one in our different branch offices.
             </p>
+            <Link to="/privacy-policy">
             <motion.a
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -477,6 +484,8 @@ function HomePage() {
                 <img src="assets/green-arrow.png" alt="" />
               </div>
             </motion.a>
+            </Link>
+            
           </motion.div>
         </motion.div>
       </section>
@@ -1004,7 +1013,9 @@ function HomePage() {
               <h3 className="font-semibold text-lg">Services</h3>
               <p>Trainings</p>
             </div>
-            <p>Job recruitment</p>
+            <Link to="privacy-policy">
+            <p className="hover:underline">Job recruitment</p>
+            </Link>
             <p>Hire emergency staffs and Health care assistance</p>
           </div>
 
@@ -1063,7 +1074,7 @@ function HomePage() {
                   <FaLinkedin className="text-2xl hover:text-blue-900" />
                 </a>
               </div>
-              <Link className="inline-block pt-2" to="/privacy-policy">
+              <Link className="inline-block pt-2 hover:underline" to="/privacy-policy">
                 Privacy Policy
               </Link>
             </div>

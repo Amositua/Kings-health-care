@@ -13,7 +13,7 @@ const CongratulationPageOne = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/config/paypal") // Replace with your API endpoint
+      .get("https://kings-backend-4diu.onrender.com/api/config/paypal") // Replace with your API endpoint
       .then((response) => {
         setLoading(true);
         setPaypal(response.data);
@@ -23,7 +23,6 @@ const CongratulationPageOne = () => {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-   
   }, []);
 
   useEffect(() => {

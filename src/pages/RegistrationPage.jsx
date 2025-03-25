@@ -8,6 +8,7 @@ import Select from "react-select";
 import { getNames } from "country-list";
 
 const RegistrationPage = () => {
+  const [loading, setLoading] = useState(false);
   const topRef = useRef(null);
 
   useEffect(() => {
@@ -85,7 +86,7 @@ const RegistrationPage = () => {
     Object.entries(formData).forEach(([key, value]) => {
       data.append(key, value);
     });
-
+    setLoading(true); // Set loading to true when submitting
     try {
       const response = await axios.post(
         "https://kings-backend-4diu.onrender.com/register",
@@ -105,6 +106,8 @@ const RegistrationPage = () => {
       } else {
         console.error("An unknown error occurred.");
       }
+    } finally {
+      setLoading(false); // Reset loading state after response
     }
 
     console.log("Form submitted", formData);
@@ -308,13 +311,43 @@ const RegistrationPage = () => {
         </div>
 
         {error && <p style={{ color: "red" }}>{error}</p>}
-
         <button
+  type="submit"
+  className="w-full bg-blue-500 text-white py-3 lg:py-4 mt-4 rounded-md font-bold hover:bg-blue-600 transition flex justify-center items-center"
+  disabled={loading} // Disable button while loading
+>
+  {loading ? (
+    <svg
+      className="animate-spin h-5 w-5 mr-3 text-white"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        className="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        strokeWidth="4"
+      ></circle>
+      <path
+        className="opacity-75"
+        fill="currentColor"
+        d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8H4z"
+      ></path>
+    </svg>
+  ) : (
+    "Submit"
+  )}
+</button>
+
+        {/* <button
           type="submit"
           className="w-full bg-blue-500 text-white p-3 lg:p-5 mt-4 rounded-md hover:bg-blue-600"
         >
           Submit
-        </button>
+        </button> */}
       </form>
     </div>
   );
