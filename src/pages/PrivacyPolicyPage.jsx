@@ -31,7 +31,7 @@ function PrivacyPolicyPage() {
         BACKGROUND: 
         <br></br>
         <br></br>
-        PLUS Recruitment Limited understands that your privacy is important to you and that you care about how your personal data is used. We respect and value the privacy of everyone who visits this website, www.plusrecruitment.co.uk (“Our Site”) and only collect and use your personal data as described in this Privacy Policy. Any personal data We collect will only be used as permitted by law. 
+        Kings Health Practitioner Limited understands that your privacy is important to you and that you care about how your personal data is used. We respect and value the privacy of everyone and only collect and use your personal data as described in this Privacy Policy. Any personal data We collect will only be used as permitted by law
         <br></br>
         <br></br>
         Please read this Privacy Policy carefully and ensure that you understand it.
