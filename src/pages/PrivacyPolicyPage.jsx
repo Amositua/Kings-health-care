@@ -15,16 +15,14 @@ function PrivacyPolicyPage() {
   return (
     <div ref={topRef} className="bg-lightBlue">
       <div class="container mx-auto px-5 pt-3 ">
-        <div class="flex justify-center items-center pb-4">
-          <div className="w-1/3">
-            <Link className="inline-block w-10" to="/">
-              <img src="assets/image.png" alt="" />
-            </Link>{" "}
-          </div>
-          <div class="flex items-center justify-start md:ml-20 w-2/3 mr-10 md:mr-0">
-            <h1 className="text-center md:px-6 md:py-2 px-2 py-1 border-t-4 border-t-gray-400 border-b-4 border-b-gray-400 md:text-3xl text-xl font-semibold max-w-2xl md:ml-16 ml-0 ">
-              PRIVACY POLICY
-            </h1>
+        <div class="flex items-center justify-between pb-4">
+          <h1 className="w-[45%] md:text-3xl text-lg font-semibold">
+            PRIVACY POLICY
+          </h1>
+          <div class="flex items-center w-[52%] ">
+              <Link className="inline-block w-[200px]" to="/">
+                <img src="assets/image.png" alt="" />
+              </Link>
           </div>
         </div>
 

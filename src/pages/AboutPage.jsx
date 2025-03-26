@@ -17,15 +17,18 @@ function AboutPage() {
   return (
     <div ref={topRef} className="bg-lightBlue">
       <div class="container mx-auto px-5 pt-3">
-        <Link className="inline-block w-10 md:w-full" to="/">
-          <img src="assets/image.png" alt="" />
+        <div class="flex items-center justify-between">
+        <Link className="inline-block md:w-[10%]" to="/">
+          <img className="w-24" src="assets/image.png" alt="" />
         </Link>
 
-        <div class="flex items-center justify-center">
+        <div class="flex items-center justify-center md:w-[90%] md:mr-20">
           <h1 className="text-center md:text-3xl text-lg font-semibold max-w-xl">
             WELCOME TO KINGS HEALTH PRACTITIONERS LIMITED
           </h1>
         </div>
+        </div>
+        
 
         <p className="mt-4">
           Kings Health Care Practitoners Limited is a recruitment  and
