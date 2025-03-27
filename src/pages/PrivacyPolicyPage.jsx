@@ -363,8 +363,7 @@ function PrivacyPolicyPage() {
             will be immediately posted on Our Site and you will be deemed to
             have accepted the terms of the Privacy Policy on your first use of
             Our Site following the alterations. We recommend that you check this
-            page regularly to keep up-to-date. This Privacy Policy was last
-            updated on 23rd August, 2022.
+            page regularly to keep up-to-date.
             <br></br>
             <br></br>
             <br></br>© Kings Health Practitioners Limited Website Privacy Policy
