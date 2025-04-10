@@ -67,7 +67,7 @@ const CongratulationPageOne = () => {
       .create({
         purchase_units: [
           {
-            amount: { value: "0" },
+            amount: { value: "0.01" },
           },
         ],
       })
