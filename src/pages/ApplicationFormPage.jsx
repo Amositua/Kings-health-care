@@ -143,12 +143,12 @@ function ApplicationFormPage() {
           <div class="flex flex-col space-y-2 self-start">
             <div class="flex flex-col">
               <h3 className="font-semibold text-lg">Address</h3>
-              <p>3, Nicon Crescent, Independence Layout, Enugu, Nigeria</p>
-            </div>
-            <p>
+              <p>
               Cumber land house, 24-28 Baxter Avenue, South end- on- sea.
               England.
             </p>
+            </div>
+            <p>3, Nicon Crescent, Independence Layout, Enugu, Nigeria</p>
             <div class="flex flex-col space-y-2">
               <h2 className="mt-2">Follow us</h2>
               <div className="flex space-x-4">
