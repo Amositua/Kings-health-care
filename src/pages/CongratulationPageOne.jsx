@@ -54,9 +54,9 @@ const CongratulationPageOne = () => {
     });
   }
 
-  async function onApproveTest() {
-    alert("Order is paid");
-  }
+  // async function onApproveTest() {
+  //   alert("Order is paid");
+  // }
 
   function onError(err) {
     console.error(err.message);
@@ -67,7 +67,7 @@ const CongratulationPageOne = () => {
       .create({
         purchase_units: [
           {
-            amount: { value: "0.01" },
+            amount: { value: "0" },
           },
         ],
       })
