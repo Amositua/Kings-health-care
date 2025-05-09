@@ -2,6 +2,7 @@ import React, { use } from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { loadStripe } from "@stripe/stripe-js";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 
 const CongratulationPageOne = () => {
@@ -10,6 +11,28 @@ const CongratulationPageOne = () => {
   const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
 
   const navigate = useNavigate();
+
+  const makePayment = async () => {
+    const stripe = await loadStripe(
+      "pk_live_51R91JFHqriTZ5S6h8ApvIqn4bdnM0zSrHmsqE45fK9GeEQ5QJSf8dOyuXan9znPrj9tkelU7w2Vi8PBQwClP7mdI00usCxVRLW"
+    );
+
+    const response = await fetch(
+      "https://kings-backend-4diu.onrender.com/create-checkout-session",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+
+    const session = await response.json();
+
+    if (!session.id) {
+      console.error("❌ No session ID returned:", session);
+      return;
+    }
+    await stripe.redirectToCheckout({ sessionId: session.id });
+  };
 
   useEffect(() => {
     axios
@@ -32,7 +55,7 @@ const CongratulationPageOne = () => {
           type: "resetOptions",
           value: {
             "client-id": paypal.clientId,
-            currency: "USD",
+            currency: "NGN",
           },
         });
         paypalDispatch({ type: "setLoadingStatus", value: "pending" });
@@ -123,6 +146,10 @@ const CongratulationPageOne = () => {
                 >
                   Test Pay Order
                 </button> */}
+
+                <button onClick={makePayment} style={{ marginBottom: "10px" }}>
+                  Pay $0.01 Now
+                </button>
 
                 <div>
                   <PayPalButtons

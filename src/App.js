@@ -9,6 +9,7 @@ import AboutPage from "./pages/AboutPage";
 import ApplicationFormPage from "./pages/ApplicationFormPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import StripePayment from "./pages/StripePaymant";
+import PaymentScreen from "./pages/PaymentScreen";
 
 function App() {
   useEffect(() => {
@@ -22,11 +23,12 @@ function App() {
         <Route path="/registration" element={<RegistrationPage />} />
         <Route path="/congratulation-one" element={<CongratulationPageOne />} />
         <Route path="/congratulation-two" element={<CongratulationPageTwo />} />
-        <Route path="/payment" element={<StripePayment />} />
+        {/* <Route path="/payment" element={<StripePayment />} /> */}
         <Route path="/core-values" element={<CoreValuesPage />} />
         <Route path="/about-us" element={<AboutPage />} />
         <Route path="/application-form" element={<ApplicationFormPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/payment-2" element={<PaymentScreen />} />
       </Routes>
     </div>
   );
