@@ -18,7 +18,7 @@ const CongratulationPageOne = () => {
     );
 
     const response = await fetch(
-      "https://kings-backend-4diu.onrender.com/create-checkout-session",
+      "http://localhost:8000/create-checkout-session",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -148,7 +148,7 @@ const CongratulationPageOne = () => {
                 </button> */}
 
                 <button onClick={makePayment} style={{ marginBottom: "10px" }}>
-                  Pay $0.01 Now
+                  Pay Now
                 </button>
 
                 <div>

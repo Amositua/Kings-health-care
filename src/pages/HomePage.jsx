@@ -602,7 +602,7 @@ function HomePage() {
                       "We place our certified trainees on job opportunities within and outside Nigeria.",
                       "We assists our trainees financially in traveling out of the country for work.",
                       "We provide emergency staff of nurses and healthcare assistants (HCA) for NHS and private healthcare organizations.",
-                      "Client and Trainee confidence.",
+                      "We offer online training.",
                     ][index] || "24/7 hour service"}
                   </p>
                 </motion.div>
