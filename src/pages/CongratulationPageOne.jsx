@@ -1,16 +1,21 @@
-import React, { use } from "react";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
-import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
+import PaystackPayment from "../components/PaystackPayment";
 
 const CongratulationPageOne = () => {
-  const [paypal, setPaypal] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
+  const [region, setRegion] = useState("");
+  const [showPaystackForm, setShowPaystackForm] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
-  const navigate = useNavigate();
+  const handleRegionSelect = (e) => {
+    setRegion(e.target.value);
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    setShowPaystackForm(true);
+  };
 
   const makePayment = async () => {
     const stripe = await loadStripe(
@@ -18,7 +23,7 @@ const CongratulationPageOne = () => {
     );
 
     const response = await fetch(
-      "http://localhost:8000/create-checkout-session",
+      "https://kings-backend-4diu.onrender.com/create-checkout-session",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -34,72 +39,6 @@ const CongratulationPageOne = () => {
     await stripe.redirectToCheckout({ sessionId: session.id });
   };
 
-  useEffect(() => {
-    axios
-      .get("https://kings-backend-4diu.onrender.com/api/config/paypal") // Replace with your API endpoint
-      .then((response) => {
-        setLoading(true);
-        setPaypal(response.data);
-        console.log(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
-
-  useEffect(() => {
-    if (paypal?.clientId) {
-      const loadPaypalScript = async () => {
-        paypalDispatch({
-          type: "resetOptions",
-          value: {
-            "client-id": paypal.clientId,
-            currency: "NGN",
-          },
-        });
-        paypalDispatch({ type: "setLoadingStatus", value: "pending" });
-      };
-      if (!window.paypal) {
-        loadPaypalScript();
-      }
-    }
-  }, [paypal, paypalDispatch]);
-
-  function onApprove(data, actions) {
-    return actions.order.capture().then(async function (details) {
-      try {
-        console.log("Payment successful");
-        navigate("/congratulation-two");
-      } catch (err) {
-        console.error(err?.data?.message || err.message);
-      }
-    });
-  }
-
-  // async function onApproveTest() {
-  //   alert("Order is paid");
-  // }
-
-  function onError(err) {
-    console.error(err.message);
-  }
-
-  function createOrder(data, actions) {
-    return actions.order
-      .create({
-        purchase_units: [
-          {
-            amount: { value: "0.01" },
-          },
-        ],
-      })
-      .then((orderID) => {
-        return orderID;
-      });
-  }
-
-  // const navigate = useNavigate();
   return (
     <div className="">
       <div class="container mx-auto px-5 max-w-xl bg-lightBlue min-h-screen">
@@ -127,52 +66,125 @@ const CongratulationPageOne = () => {
               your application.
             </p>
 
-            {loading && (
-              <div className="flex justify-center my-10">
-                <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-solid"></div>
-              </div>
-            )}
+            <div className="max-w-md mx-auto mt-8 p-4 shadow-md rounded-xl bg-white">
+              <label className="block text-sm font-medium mb-2">
+                Where are you making payment from?
+              </label>
+              <select
+                onChange={handleRegionSelect}
+                value={region}
+                className="w-full p-2 border rounded mb-6"
+              >
+                <option value="">Select your region</option>
+                <option value="africa">Africa</option>
+                <option value="other">Other Continents</option>
+              </select>
 
-            {isPending ? (
-              <div className="flex justify-center my-10">
-                <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-solid"></div>
-              </div>
-            ) : (
-              <div>
-                {/* THIS BUTTON IS FOR TESTING! REMOVE BEFORE PRODUCTION! */}
-                {/* <button
-                  style={{ marginBottom: "10px" }}
-                  onClick={onApproveTest}
-                >
-                  Test Pay Order
-                </button> */}
+              {region === "africa" && !showPaystackForm && (
+                <form onSubmit={handleFormSubmit} className="space-y-4">
+                  <input
+                    type="text"
+                    placeholder="Your Full Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                    className="w-full p-2 border rounded"
+                  />
+                  <input
+                    type="email"
+                    placeholder="Your Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="w-full p-2 border rounded"
+                  />
+                  <button
+                    type="submit"
+                    className="bg-green-600 text-white px-6 py-2 rounded w-full"
+                  >
+                    Continue to Paystack
+                  </button>
+                </form>
+              )}
 
-                <button onClick={makePayment} style={{ marginBottom: "10px" }}>
-                  Pay Now
-                </button>
+              {region === "africa" && showPaystackForm && (
+                <div className="mt-4">
+                  <PaystackPayment
+                    amount={50}
+                    email={email}
+                    name={name}
+                    className="bg-blue-600 text-white px-6 py-3 rounded"
+                  />
+                </div>
+              )}
 
-                <div>
-                  <PayPalButtons
-                    createOrder={createOrder}
-                    onApprove={onApprove}
-                    onError={onError}
-                  ></PayPalButtons>
+              {region === "other" && (
+                <div className="mt-4 mx-10">
+                  <button
+                onClick={makePayment}
+                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl transition duration-300 w-full md:w-auto"
+              >
+                Pay with Stripe
+              </button>
+                </div>
+              )}
+            </div>
+            {/* <div className="flex flex-col md:flex-row gap-4">
+              <button
+                onClick={makePayment}
+                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl transition duration-300 w-full md:w-auto"
+              >
+                Pay with Stripe
+              </button>
+
+              <button
+                onClick={() => setShowPaystackForm(true)}
+                className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-xl transition duration-300 w-full md:w-auto"
+              >
+                Pay with Paystack
+              </button>
+            </div> */}
+
+            {/* Paystack Form Pop-up */}
+            {/* {showPaystackForm && (
+              <div className="mt-6 p-6 border rounded-xl shadow-md bg-white">
+                <h3 className="text-xl font-semibold mb-4">
+                  Enter your details
+                </h3>
+
+                <div className="flex flex-col space-y-3">
+                  <input
+                    type="text"
+                    placeholder="Your full name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="border border-gray-300 rounded-md px-4 py-2"
+                  />
+                  <input
+                    type="email"
+                    placeholder="Your email address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="border border-gray-300 rounded-md px-4 py-2"
+                  />
+
+                  {name && email && (
+                    <PaystackPayment
+                      amount={50}
+                      email={email}
+                      name={name}
+                      className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-xl transition duration-300"
+                    />
+                  )}
                 </div>
               </div>
-            )}
-            {/* <button className="md:w-[30%] self-end mt-4 bg-blue-500 text-white p-3 rounded-md hover:bg-blue-600">
-              <div class="flex justify-between space-x-2 md:space-x-0">
-                <p>PAY NOW</p>
-                <img className="md:w-6 w-5" src="assets/arrow.png" alt=""/>
-              </div>
-            </button> */}
+            )} */}
 
             <img className="w-16" src="assets/fansy.png" alt="" />
           </div>
         </div>
         <div class="flex justify-end">
           <img className="w-12 mr-10" src="assets/arrow-line.png" alt="" />
-          {/* <img className="w-12" src="assets/arrow-line-2.png" alt=""/> */}
         </div>
       </div>
     </div>
