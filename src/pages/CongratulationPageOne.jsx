@@ -66,8 +66,8 @@ const CongratulationPageOne = () => {
               your application.
             </p>
 
-            <div className="max-w-md mx-auto mt-8 p-4 shadow-md rounded-xl bg-white">
-              <label className="block text-sm font-medium mb-2">
+            <div className="max-w-md mt-8 p-4 shadow-md rounded-xl bg-white">
+              <label className="block  font-medium mb-2">
                 Where are you making payment from?
               </label>
               <select
