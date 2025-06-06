@@ -66,7 +66,7 @@ const CongratulationPageOne = () => {
               your application.
             </p>
 
-            <div className="max-w-md mt-8 p-4 shadow-md rounded-xl bg-white">
+            <div className="max-w-lg mt-8 p-4 shadow-md rounded-xl bg-white">
               <label className="block  font-medium mb-2">
                 Where are you making payment from?
               </label>
@@ -98,16 +98,18 @@ const CongratulationPageOne = () => {
                     required
                     className="w-full p-2 border rounded"
                   />
-                  <button
-                    type="submit"
-                    className="bg-green-600 text-white px-6 py-2 rounded w-full"
-                  >
-                    Continue to Paystack
-                  </button>
+                    <div className="flex">
+                  <PaystackPayment
+                    amount={50}
+                    email={email}
+                    name={name}
+                    className="bg-blue-600 text-white max-w-lg mx-auto px-6 py-3 rounded"
+                  />
+                  </div>
                 </form>
               )}
 
-              {region === "africa" && showPaystackForm && (
+              {/* {region === "africa" && showPaystackForm && (
                 <div className="mt-4">
                   <PaystackPayment
                     amount={50}
@@ -116,13 +118,13 @@ const CongratulationPageOne = () => {
                     className="bg-blue-600 text-white px-6 py-3 rounded"
                   />
                 </div>
-              )}
+              )} */}
 
               {region === "other" && (
-                <div className="mt-4 mx-10">
+                <div className="mt-4 mx-10 flex">
                   <button
                 onClick={makePayment}
-                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl transition duration-300 w-full md:w-auto"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl transition duration-300 w-full md:w-auto mx-auto"
               >
                 Pay with Stripe
               </button>
